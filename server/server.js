@@ -52,85 +52,85 @@ app.put('/api/v1/users/profile/id', async(req, res)=>{
     }
 })
 
-//accounts route
-//POST/api/v1/accounts
-app.post('/api/v1/accounts', async(req, res)=>{
+//following routes
+//POST/api/v1/following
+app.post('/api/v1/following', async(req, res)=>{
     try {
-        res.json({msg: 'Create Account route'})
+        res.json({msg: 'Create a Following route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//GET/api/v1/accounts/:id
-app.get('/api/v1/accounts/:id', async(req, res)=>{
+//GET/api/v1/following/:id
+app.get('/api/v1/following/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Get single Account route'})
+        res.json({msg: 'Get single Following route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//DELETE/api/v1/accounts/:id
-app.delete('/api/v1/accounts/:id', async(req, res)=>{
+//DELETE/api/v1/following/:id
+app.delete('/api/v1/following/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Delete Account route'})
+        res.json({msg: 'Delete a Following route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//PUT/api/v1/accounts/:id
-app.put('/api/v1/accounts/:id', async(req, res)=>{
+//PUT/api/v1/following/:id
+app.put('/api/v1/following/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Update Account route'})
+        res.json({msg: 'Update a Following route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//transactions route
+//listened route
 
-//POST/api/v1/transactions
-app.post('/api/v1/transactions', async(req, res)=>{
+//POST/api/v1/listened
+app.post('/api/v1/listened', async(req, res)=>{
     try {
-        res.json({msg: 'Create Transactions route'})
+        res.json({msg: 'Create a Listened route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//GET/api/v1/transactions
-app.get('/api/v1/transactions', async(req, res)=>{
+//GET/api/v1/listened
+app.get('/api/v1/listened', async(req, res)=>{
     try {
-        res.json({msg: 'Get Transactions route'})
+        res.json({msg: 'Get Listened route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//GET/api/v1/transactions/:id
-app.get('/api/v1/transactions/:id', async(req, res)=>{
+//GET/api/v1/listened/:id
+app.get('/api/v1/listened/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Get Transaction route'})
+        res.json({msg: 'Get a Listened route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//DELETE/api/v1/transactions/:id
-app.delete('/api/v1/transactions/:id', async(req, res)=>{
+//DELETE/api/v1/listened/:id
+app.delete('/api/v1/listened/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Delete Transaction route'})
+        res.json({msg: 'Delete a Listened route'})
     } catch (error) {
         res.json(error)
     }
 })
 
-//PUT/api/v1/transactions/:id
-app.put('/api/v1/transactions/:id', async(req, res)=>{
+//PUT/api/v1/listened/:id
+app.put('/api/v1/listened/:id', async(req, res)=>{
     try {
-        res.json({msg: 'Update Transaction route'})
+        res.json({msg: 'Update a Listened route'})
     } catch (error) {
         res.json(error)
     }
