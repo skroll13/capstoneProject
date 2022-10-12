@@ -1,8 +1,25 @@
-const express = require('express')
-port = 3001
 
-const app = express()
+const express = require('express');
+const followingRoute = require('./routes/following/followingRoutes');
+const listenedRoute = require('./routes/listened/listenedRoutes');
+const usersRoute = require('./routes/users/usersRoutes');
+const app = express();
 
-app.listen(port, (req,res) => {
-   console.log(`Server is listening on port: ${port}`)
-})
+//middlewares
+
+
+//routes
+
+//users routes
+app.use('/api/v1/users', usersRoute)
+//following routes
+app.use('/api/v1/following', followingRoute)
+//listened routes
+app.use('/api/v1/listened', listenedRoute)
+
+//error handlers
+
+//listen to server
+const PORT = process.env.PORT || 9000
+app.listen(PORT, console.log(`listening on port ${PORT}`))
+
