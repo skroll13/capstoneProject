@@ -1,4 +1,5 @@
 const express = require('express');
+const usersRoute = require('./routes/users/usersRoute');
 const app = express();
 
 //middlewares
@@ -7,50 +8,13 @@ const app = express();
 //routes
 
 //users route
-//POST/api/v1/users/register
-app.post('/api/v1/users/register', async(req, res)=>{
-    try {
-        res.json({msg: 'Register route'})
-    } catch (error) {
-        res.json(error)
-    }
-})
+app.use('/api/v1/users', usersRoute)
 
-//POST/api/v1/users/login
-app.post('/api/v1/users/login', async(req, res)=>{
-    try {
-        res.json({msg: 'Login route'})
-    } catch (error) {
-        res.json(error)
-    }
-})
 
-//GET/api/v1/users/profile/:id
-app.get('/api/v1/users/profile/:id', async(req, res)=>{
-    try {
-        res.json({msg: 'Profile route'})
-    } catch (error) {
-        res.json(error)
-    }
-})
 
-//DELETE/api/v1/users/:id
-app.delete('/api/v1/users/profile/:id', async(req, res)=>{
-    try {
-        res.json({msg: 'Delete route'})
-    } catch (error) {
-        res.json(error)
-    }
-})
 
-//PUT/api/v1/users/:id
-app.put('/api/v1/users/profile/id', async(req, res)=>{
-    try {
-        res.json({msg: 'Update route'})
-    } catch (error) {
-        res.json(error)
-    }
-})
+
+app.put('/api/v1/users/:id', )
 
 //following routes
 //POST/api/v1/following
@@ -103,7 +67,7 @@ app.post('/api/v1/listened', async(req, res)=>{
 //GET/api/v1/listened
 app.get('/api/v1/listened', async(req, res)=>{
     try {
-        res.json({msg: 'Get Listened route'})
+        res.json({msg: 'Get Listened routes'})
     } catch (error) {
         res.json(error)
     }
