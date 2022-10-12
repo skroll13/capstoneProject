@@ -1,11 +1,12 @@
 const express = require('express');
+require("./config/dbConnect")
 const followingRoute = require('./routes/following/followingRoutes');
 const listenedRoute = require('./routes/listened/listenedRoutes');
 const usersRoute = require('./routes/users/usersRoutes');
 const app = express();
 
 //middlewares
-
+app.use(express.json()) //pass incoming data
 
 //routes
 
@@ -15,6 +16,11 @@ app.use('/api/v1/users', usersRoute)
 app.use('/api/v1/following', followingRoute)
 //listened routes
 app.use('/api/v1/listened', listenedRoute)
+
+// app.post('/api/v1/users', async (req, res)  => {
+//     const user = req.body
+//     const newUser = new user
+// })
 
 //error handlers
 
