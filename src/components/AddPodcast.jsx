@@ -1,15 +1,14 @@
-import "./App.css"
 import React from 'react'
 
-function App() {
+
+const AddPodcast = () => {
   return (
     <>
-   
     
-  
-
+    
+    
     </>
   )
 }
 
-export default App
+export default AddPodcast
