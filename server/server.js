@@ -1,3 +1,4 @@
+
 const express = require('express');
 const followingRoute = require('./routes/following/followingRoutes');
 const listenedRoute = require('./routes/listened/listenedRoutes');
@@ -21,3 +22,4 @@ app.use('/api/v1/listened', listenedRoute)
 //listen to server
 const PORT = process.env.PORT || 9000
 app.listen(PORT, console.log(`listening on port ${PORT}`))
+
