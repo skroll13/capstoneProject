@@ -44,6 +44,17 @@ const getOneFollowingController = async(req, res)=>{
     }
 }
 
+//get all following
+const getAllFollowingController = async(req, res)=>{
+    try {
+        const following = await Following.find()
+        res.json(following)
+        console.log(following)
+    } catch (error) {
+        res.json(error)
+    }
+}
+
 //delete
 const deleteFollowingController = async(req, res)=>{
     try {
@@ -62,14 +73,6 @@ const updateFollowingController = async(req, res)=>{
     }
 }
 
-//get all following
-const getAllFollowingController = async(req, res)=>{
-    try {
-        res.json({msg: 'Get all Following routes'})
-    } catch (error) {
-        res.json(error)
-    }
-}
 
 
 

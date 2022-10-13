@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-//creating _hasCreated..._ for both Following and Listened
+//made _hasCreated..._ for both Following and Listened
     hasCreatedFollowing: {
         type: Boolean,
         default: false,
