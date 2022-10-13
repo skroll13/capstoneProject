@@ -1,6 +1,9 @@
 const bcrypt = require('bcryptjs')
 const User = require("../../model/User")
 const { AppErr, appErr } = require('../../utils/appErr')
+const generateToken = require('../../utils/generateToken')
+const verifyToken = require('../../utils/verifyToken')
+
 
 //register
 const registerUserController = async(req, res, next)=>{
@@ -50,7 +53,8 @@ const userLoginController = async(req, res)=>{
         res.json({
             status: "success", 
             fullname: userFound.fullname,
-        id: userFound._id
+            id: userFound._id,
+            token: generateToken(userFound._id)
         })
     } catch (error) {
         next(AppErr)
@@ -59,8 +63,10 @@ const userLoginController = async(req, res)=>{
 
 //profile
 const userProfileController = async(req, res)=>{
+    console.log(req.user)
     try {
-        res.json({msg: 'Profile route'})
+        const user = await User.findById(req.user)
+        res.json(user)
     } catch (error) {
         res.json(error)
     }
