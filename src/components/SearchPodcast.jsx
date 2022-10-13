@@ -52,7 +52,7 @@ const SearchPodcast = () => {
   return (
     <>
       <div className="search">
-        <input
+        <input className="text-green-800"
           onChange={e => setSearchInput(e.target.value)}
           type="text"
           placeholder="Search"
