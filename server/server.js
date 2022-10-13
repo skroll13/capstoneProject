@@ -1,4 +1,5 @@
 const express = require('express');
+const globalErrHandler = require('./middleware/globalErrHandler');
 require("./config/dbConnect")
 const followingRoute = require('./routes/following/followingRoutes');
 const listenedRoute = require('./routes/listened/listenedRoutes');
@@ -23,6 +24,7 @@ app.use('/api/v1/listened', listenedRoute)
 // })
 
 //error handlers
+app.use(globalErrHandler)
 
 //listen to server
 const PORT = process.env.PORT || 9000
