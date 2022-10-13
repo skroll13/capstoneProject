@@ -38,7 +38,7 @@ const registerUserController = async(req, res, next)=>{
 }
 
 //login
-const userLoginController = async(req, res)=>{
+const userLoginController = async(req, res, next)=>{
     const { email, password } = req.body
     try {
         //check if email exists
@@ -58,7 +58,7 @@ const userLoginController = async(req, res)=>{
             token: generateToken(userFound._id)
         })
     } catch (error) {
-        next(AppErr)
+        next(new Error(error))
     }
 }
 
@@ -90,9 +90,46 @@ const deleteUserController = async(req, res)=>{
 }
 
 //update
-const updateUserController = async(req, res)=>{
+const updateUserController = async(req, res, next)=>{
     try {
-        res.json({msg: 'Update user route'})
+        //check if email exists
+        if(req.body.email){
+        const userFound = await User.findOne({email: req.body.email})
+        if(userFound) return next(
+            new AppErr('email is taken by another user or you already have this email registered with us', 400)
+            )
+        }
+        //check if user is updating their password
+        if(req.body.password){
+            const salt = await bcrypt.genSalt(10)
+            const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+            //update the user
+            const user = await User.findByIdAndUpdate(
+                req.user,
+                {
+                password: hashedPassword,
+                },
+                {
+                new: true,
+                runValidators: true
+                }
+            )
+            //send response to the user
+            return res.status(200).json({
+                status:"success",
+                data: user
+            })
+        }
+        const user = await User.findByIdAndUpdate(req.user, req.body, {
+            new: true,
+            runValidators: true
+        })
+        //send response
+        res.status(200).json({
+            status:"success",
+            data: user
+        })
     } catch (error) {
         res.json(error)
     }

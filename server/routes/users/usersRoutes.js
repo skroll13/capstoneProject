@@ -22,7 +22,7 @@ usersRoute.get("/profile/", isLogin, userProfileController)
 //DELETE/api/v1/users/:id
 usersRoute.delete("/:id", deleteUserController)
 
-//PUT/api/v1/users/:id
-usersRoute.put("/:id", updateUserController)
+//PUT/api/v1/users
+usersRoute.put("/", isLogin, updateUserController)
 
 module.exports = usersRoute;
