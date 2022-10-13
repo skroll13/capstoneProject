@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import {useDispatch} from 'react-redux'
 import { addToFollowing } from "../actions/actions"
 import axios from 'axios'
+import { Button } from '@material-tailwind/react'
 
 const { Client } = require("podcast-api")
 
@@ -51,17 +52,23 @@ const SearchPodcast = () => {
 
   return (
     <>
-      <div className="search">
-        <input className="text-green-800"
+      <div className='search'>
+        <input
+          className='text-green-800'
           onChange={e => setSearchInput(e.target.value)}
-          type="text"
-          placeholder="Search"
+          type='text'
+          placeholder='Search'
         />
-        <button onClick={handleInput} type="submit">
-          Search
-        </button>
+        <div className='mx-auto w-full text-center'>
+          <button
+            
+            className='bg-rose-300 shadow-lg shadow-rose-500/50'
+            onClick={handleInput}
+            type='submit'>
+            Search
+          </button>
+        </div>
       </div>
-
 
       {!searchResults ? (
         <div></div>
@@ -69,8 +76,9 @@ const SearchPodcast = () => {
         searchResults.map(podcastObj => {
           return (
             <>
-            <img src={podcastObj.image} alt="" /> <button onClick={() => saveToFollowing(podcastObj)}>Save</button>
-          </>
+              <img src={podcastObj.image} alt='' />{" "}
+              <button onClick={() => saveToFollowing(podcastObj)}>Save</button>
+            </>
           )
         })
       )}
