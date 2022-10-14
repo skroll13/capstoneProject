@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-// import Nav from "./Nav"
+import Nav from "./Nav"
 
 const BaseLayout = props => {
   return (
@@ -8,7 +8,7 @@ const BaseLayout = props => {
       <h1 className='font-serif italic text-red-800'>
         Welcome to your Podcast Page
       </h1>
-      {/* <Nav /> */}
+      <Nav />
       <ul>
         <li className='font-serif text-gray-500'>
           <Link className='font-serif text-gray-500'to='/'>Home</Link>

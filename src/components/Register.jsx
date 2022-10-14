@@ -25,9 +25,10 @@ const Register = () => {
     <>
     <Nav />
       <div className="text-center">
-        {/* <div className="col-lg-7 py-3 py-md-5"> */}
-          <h2 className="display-4">Register Below</h2>
-        {/* </div>     */}
+          <h2 className="text-emerald-900 italic font-serif">Register Below</h2>
+        <div>
+          <input className="input"></input>
+        </div>
       </div>     
     </>
   )

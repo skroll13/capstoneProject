@@ -9,7 +9,7 @@ import reducer from './reducers/reducer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Axios from 'axios'
-import { ThemeProvider } from "@material-tailwind/react"
+
 
 import App from "./App"
 import './index.css';
@@ -39,7 +39,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <Provider store={store}>
-    <ThemeProvider>
+   
       <Router>
         <BaseLayout>
           <Routes>
@@ -53,7 +53,7 @@ root.render(
           </Routes>
         </BaseLayout>
       </Router>
-      </ThemeProvider>
+    
     </Provider>
     <App />
   </>
