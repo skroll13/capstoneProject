@@ -14,18 +14,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // commenting out these sections because it's not necessary now
-    //this could be important for other parts of the application
-    // hasCreatedAccount: {
-    //     type: Boolean,
-    //     default: false,
-    // },
-    // accounts: [
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "Account",
-    //     }
-    // ]
+//made _hasCreated..._ for both Following and Listened
+    hasCreatedFollowing: {
+        type: Boolean,
+        default: false,
+    },
+    followings: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Following",
+        }
+    ],
+    hasCreatedListened: {
+        type: Boolean,
+        default: false,
+    },
+    listened: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Listened",
+        }
+    ]
 },{
     timestamps: true,
     toJSON: {virtuals: true}

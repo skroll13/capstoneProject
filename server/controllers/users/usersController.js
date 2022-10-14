@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+const { populate } = require('../../model/User')
 const User = require("../../model/User")
 const { AppErr, appErr } = require('../../utils/appErr')
 const generateToken = require('../../utils/generateToken')
@@ -65,7 +66,14 @@ const userLoginController = async(req, res)=>{
 const userProfileController = async(req, res)=>{
     console.log(req.user)
     try {
-        const user = await User.findById(req.user)
+        const user = await User.findById(req.user).populate({
+            path:"followings",
+            //the below code didn't return relevant info
+            // populate: {
+            //     path:"followings",
+            //     model:"Following"
+            // }
+        })
         res.json(user)
     } catch (error) {
         res.json(error)
