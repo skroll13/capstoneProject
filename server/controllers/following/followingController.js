@@ -36,40 +36,60 @@ const createFollowingController = async(req, res, next)=>{
 }
 
 //get one following
-const getOneFollowingController = async(req, res)=>{
+const getOneFollowingController = async(req, res, next)=>{
     try {
-        res.json({msg: 'Get single Following route'})
+        //find id from params
+        const {id} = req.params
+        //leaving off the .populate option for now
+        const following = await Following.findById(id)
+        res.json({
+            status: "success",
+            data: following
+        })
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //get all following
-const getAllFollowingController = async(req, res)=>{
+const getAllFollowingController = async(req, res, next)=>{
     try {
         const following = await Following.find()
         res.json(following)
         console.log(following)
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //delete
-const deleteFollowingController = async(req, res)=>{
+const deleteFollowingController = async(req, res, next)=>{
     try {
-        res.json({msg: 'Delete a Following route'})
+        const { id } = req.params;
+        await Following.findByIdAndDelete(id);
+        res.status(200).json({
+            status:"success",
+            data: null
+        })
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //update
-const updateFollowingController = async(req, res)=>{
+const updateFollowingController = async(req, res, next)=>{
     try {
-        res.json({msg: 'Update a Following route'})
+        const { id } = req.params;
+        const following = await Following.findByIdAndUpdate(id, req.body,{
+            new: true,
+            runValidators: true
+        })
+        res.json({
+            status:"success",
+            data: following
+        })
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
