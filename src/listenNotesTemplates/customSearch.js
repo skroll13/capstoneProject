@@ -1,6 +1,6 @@
 import React from 'react'
 
-const customSearch = () => {
+const CustomSearch = () => {
   return (
     <>
       <form
@@ -24,4 +24,4 @@ const customSearch = () => {
   )
 }
 
-export default customSearch
+export default CustomSearch

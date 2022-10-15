@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { addToFollowing } from "../actions/actions"
 import axios from "axios"
 import { Button } from "@material-tailwind/react"
+import CustomSearch from "../listenNotesTemplates/CustomSearch"
 
 const { Client } = require("podcast-api")
 
@@ -51,23 +52,21 @@ const SearchPodcast = () => {
 
   return (
     <>
+      <CustomSearch />
       <div className='search'>
-       
-        
         <input
           className='text-green-800'
           onChange={e => setSearchInput(e.target.value)}
           type='text'
           placeholder='Podcast or Episode'
         />
-        
-          <button
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 border border-red-700 rounded'
-            onClick={handleInput}
-            type='submit'>
-            Search
-          </button>
-        
+
+        <button
+          className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
+          onClick={handleInput}
+          type='submit'>
+          Search
+        </button>
       </div>
 
       {!searchResults ? (
