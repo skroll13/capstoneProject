@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createStore } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
@@ -39,6 +39,7 @@ let persistor = persistStore(store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+  
     <Provider store={store}>
    
       <Router>
@@ -48,8 +49,6 @@ root.render(
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/searchpodcast" element={<SearchPodcast />}></Route>
-            <Route path="/addpodcast" element={<AddPodcast />}></Route>
-            <Route path="/deletepodcast" element={<DeletePodcast />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
             <Route path="/customsearch" element={<CustomSearch />}></Route>
           </Routes>
@@ -57,7 +56,8 @@ root.render(
       </Router>
       
     </Provider>
-    <App />
+    
+    
   </>
 )
 
