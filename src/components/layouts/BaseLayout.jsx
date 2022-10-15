@@ -5,33 +5,46 @@ import { Link } from "react-router-dom"
 const BaseLayout = props => {
   return (
     <>
-      <h1 className='font-serif italic text-red-800'>
-        Welcome to your Podcast Page
+      <h1 className='font-mono text-red-700'>
+        Welcome to Your Podcasts 
       </h1>
-      {/* <Nav /> */}
+
       <ul>
-        <li className='font-serif text-gray-500'>
-          <Link className='font-serif text-gray-500'to='/'>Home</Link>
-        </li>
-        <li className='bold font-serif text-purple-700'>
+        <li>
           {" "}
-          <Link className='bold font-serif text-purple-700'to='/register'>Register</Link>
-        </li>
-        <li className='font-serif text-purple-700'>
-          {" "}
-          <Link to='/login'>Login</Link>
+          <Link className='font-mono text-red-700' to='/'>
+            {" "}
+            Home
+          </Link>{" "}
         </li>
 
-        <li className='font-serif text-purple-700'>
+        <li>
           {" "}
-          <Link to='/searchpodcast'>Podcast</Link>
+          <Link className='font-mono text-red-700' to='/register'>
+            Register
+          </Link>
         </li>
-        <li className='font-serif text-purple-700'>
+
+        <li>
           {" "}
-          <Link to='/logout'>Logout</Link>
+          <Link className='font-mono text-red-700' to='/login'>
+            Login
+          </Link>
         </li>
-        {/* <li> <Link to='/deletepodcast'>Delete Podcast</Link></li> */}
-        {/* <li> <Link to='/addpodcast'>Save Podcast</Link></li> */}
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/searchpodcast'>
+            Podcast
+          </Link>
+        </li>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/logout'>
+            Logout
+          </Link>
+        </li>
       </ul>
 
       {props.children}
