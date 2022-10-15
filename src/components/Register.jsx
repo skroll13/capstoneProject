@@ -6,7 +6,7 @@ import Axios from 'axios'
 
 const Register = () => {
 
-  const [username, setUsername] = useState()
+  const [fullName, setFullName] = useState()
   const [password, setPassword] = useState()
   const [email, setEmail] = useState()
 
@@ -14,8 +14,9 @@ const Register = () => {
     e.preventDefault()
     try {
      await Axios.post('/register', {
-      username,
-      password
+      fullName,
+      password,
+      email
      })
      console.log('Registration is complete.')
     } 
@@ -37,16 +38,16 @@ const Register = () => {
         <div className="font-mono col-lg-5 pl-lg-5 pb-3 py-lg-5">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="username-register" className="text-muted mb-1">
-                <small>Username</small>
+              <label htmlFor="register" className="text-muted mb-1">
+                <small>Name</small>
               </label>
               <input
-                onChange={e => setUsername(e.target.value)}
-                id="username-register"
-                name="username"
+                onChange={e => setFullName(e.target.value)}
+                id="fullName-register"
+                name="fullName"
                 className="form-control"
                 type="text"
-                placeholder="Pick a username"
+                placeholder="Enter your Name"
                 autoComplete="off"
               />
             </div>

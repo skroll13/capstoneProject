@@ -9,7 +9,7 @@ import reducer from './reducers/reducer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Axios from 'axios'
-import { ThemeProvider } from "@material-tailwind/react"
+
 
 import App from "./App"
 import './index.css';
@@ -21,6 +21,7 @@ import SearchPodcast from './components/SearchPodcast'
 import AddPodcast from './components/AddPodcast'
 import DeletePodcast  from './components/DeletePodcast';
 import Logout from './components/Logout'
+import CustomSearch from './components/listenNotesTemplates/CustomSearch'
 
 
 const persistConfig = {
@@ -39,7 +40,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <Provider store={store}>
-    <ThemeProvider>
+   
       <Router>
         <BaseLayout>
           <Routes>
@@ -50,10 +51,11 @@ root.render(
             <Route path="/addpodcast" element={<AddPodcast />}></Route>
             <Route path="/deletepodcast" element={<DeletePodcast />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
+            <Route path="/customsearch" element={<CustomSearch />}></Route>
           </Routes>
         </BaseLayout>
       </Router>
-      </ThemeProvider>
+      
     </Provider>
     <App />
   </>

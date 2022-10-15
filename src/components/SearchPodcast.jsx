@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import { addToFollowing } from "../actions/actions"
+// import { addToFollowing } from "../actions/actions"
 import axios from "axios"
-import { Button } from "@material-tailwind/react"
-import CustomSearch from "../listenNotesTemplates/CustomSearch"
+// import { Button } from "@material-tailwind/react"
+import CustomSearch from "../components/listenNotesTemplates/CustomSearch"
 
-const { Client } = require("podcast-api")
+const { Client } = require('podcast-api')
 
 const SearchPodcast = () => {
   const [searchInput, setSearchInput] = useState()
@@ -27,7 +27,7 @@ const SearchPodcast = () => {
       .search({
         q: searchInput,
         sort_by_date: 0,
-        type: "podcast",
+        type: "episode",
         offset: 0,
         len_min: 10,
         len_max: 30,
@@ -52,7 +52,6 @@ const SearchPodcast = () => {
 
   return (
     <>
-      <CustomSearch />
       <div className='search'>
         <input
           className='text-green-800'

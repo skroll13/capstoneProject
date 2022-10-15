@@ -5,9 +5,7 @@ import { Link } from "react-router-dom"
 const BaseLayout = props => {
   return (
     <>
-      <h1 className='font-mono text-red-700'>
-        Welcome to Your Podcasts 
-      </h1>
+      <h1 className='font-mono text-red-700'>Welcome to Your Podcasts</h1>
 
       <ul>
         <li>
@@ -36,6 +34,13 @@ const BaseLayout = props => {
           {" "}
           <Link className='font-mono text-red-700' to='/searchpodcast'>
             Podcast
+          </Link>
+        </li>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/customsearch'>
+            Custom Search
           </Link>
         </li>
 
