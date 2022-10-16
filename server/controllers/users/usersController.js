@@ -13,6 +13,7 @@ const registerUserController = async(req, res, next)=>{
         const userFound = await User.findOne({ email })
         if(userFound){
             next(appErr('user already exists', 400))
+            return
         }
         //hash userpassword
         const salt = await bcrypt.genSalt(10);

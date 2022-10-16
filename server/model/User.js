@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    listened: [
+    listeneds: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Listened",

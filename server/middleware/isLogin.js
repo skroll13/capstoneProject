@@ -2,7 +2,7 @@ const { AppErr } = require("../utils/appErr")
 const getTokenFromHeader = require("../utils/getTokenFromHeader")
 const verifyToken = require("../utils/verifyToken")
 
-getTokenFromHeader
+// getTokenFromHeader
 
 const isLogin = (req, res, next) => {
     //get token from req header
