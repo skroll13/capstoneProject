@@ -31,10 +31,8 @@ const SearchPodcast = () => {
         offset: 0,
         len_min: 10,
         len_max: 30,
-
         published_before: 1580172454000,
         published_after: 0,
-        only_in: "title,description",
         language: "English",
         safe_mode: 0,
         unique_podcasts: 0
