@@ -15,10 +15,32 @@ const SearchPodcast = () => {
 
   //Once I have database info, will send via Axios
   const saveToFollowing = podcastObj => {
-    axios.post("/followingRoute", podcastObj)
-    console.log(podcastObj)
+    let newPodcast={
+  episodeName:podcastObj.podcast.title_original,
+  podcastName: podcastObj.podcast.title_original,
+  image:podcastObj.image,
+  audioLink:podcastObj.audio,
+  wantToFollow: true,
+  listenedTo: false,
+  notes:podcastObj.description_original
+}
+    axios.post("/api/v1/following", newPodcast)
+    console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
   }
+const saveToListened = (podcastObj) => {
+  let newPodcast={
+    episodeName:podcastObj.podcast.title_original,
+    podcastName: podcastObj.podcast.title_original,
+    image:podcastObj.image,
+    audioLink:podcastObj.audio,
+    wantToFollow: false,
+    listenedTo: false,
+    notes:podcastObj.description_original
+  }
+    axios.post("/api/v1/following", newPodcast)
+    console.log(newPodcast)
+}
 
   const handleInput = () => {
     const client = Client({ apiKey: "5631722333164e85ba9baaa0c517ca49" })
@@ -27,15 +49,8 @@ const SearchPodcast = () => {
       .search({
         q: searchInput,
         sort_by_date: 0,
-        type: "podcast",
-        offset: 0,
-        len_min: 10,
-        len_max: 30,
-        published_before: 1580172454000,
-        published_after: 0,
-        language: "English",
-        safe_mode: 0,
-        unique_podcasts: 0
+        type: "episode",
+        
       })
       .then(response => {
         // Get response json data here
@@ -46,8 +61,10 @@ const SearchPodcast = () => {
         console.log(error)
       })
     console.log(searchInput)
+    
   }
 
+  
   return (
     <>
     <br  />
@@ -68,15 +85,17 @@ const SearchPodcast = () => {
         </button>
       </div>
 
-      {!searchResults ? (
-        <div></div>
-      ) : (
-        searchResults.map(podcastObj => {
+      {!searchResults ? (<div></div>) : (searchResults.map(podcastObj => {
           return (
             <>
               <img src={podcastObj.image} alt='' />{" "}
-              <button onClick={() => saveToFollowing(podcastObj)}>Save</button>
+              <button onClick={() => saveToFollowing(podcastObj)}>Save to Following</button>
+
+               <button onClick={() => saveToListened(podcastObj)}>Save to Listened</button>
+            
             </>
+
+
           )
         })
       )}

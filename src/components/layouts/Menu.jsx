@@ -15,6 +15,8 @@ function Menu() {
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/searchpodcast">Search</Nav.Link>
+            <Nav.Link href="/following">Following</Nav.Link>
+            <Nav.Link href="/listened">Listened Podcasts</Nav.Link>
             <Nav.Link href="/">Logout</Nav.Link>
           </Nav>
         </Container>
