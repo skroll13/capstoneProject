@@ -18,7 +18,7 @@ export const fetchProfileFail = (second) => {}
 
 export const fetchProfileSuccess = (second) => {}
 
-export const logout = (second) => {}
+// export const logout = (second) => {}
 
 export const registerSuccess = (second) => {}
 
@@ -47,4 +47,40 @@ export const register = (formData, cb) => async dispatch => {
       data: err
     })
   }
+}
+
+export const login = (formData, cb) => async dispatch =>{
+  try {
+    //make an api call to /login
+    let response = await axios.post('/api/v1/users/login', formData)
+    let token = response.data.token
+
+    //dispatch action
+    dispatch({
+      type: actionTypes.LOAD_USER_TOKEN,
+      data: token
+    })
+
+    localStorage.setItem('token', token)
+
+    cb()
+
+  } catch (err) {
+    dispatch({
+      type: actionTypes.ERROR,
+      data: err
+    })
+  }
+}
+
+export const logout = (cb) => dispatch => {
+  dispatch({
+    type: actionTypes.LOAD_USER_TOKEN,
+    data: ""
+  })
+
+  //clear local storage
+  localStorage.removeItem('token')
+
+  cb()
 }

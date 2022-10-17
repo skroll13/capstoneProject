@@ -7,7 +7,7 @@ const generateToken = require('../../utils/generateToken')
 //register
 const registerUserController = async(req, res, next)=>{
     const { fullname, password, email } = req.body
-    console.log('test')
+    // console.log('test')
     try{
         //check if email exsists
         const userFound = await User.findOne({ email })
@@ -32,7 +32,7 @@ const registerUserController = async(req, res, next)=>{
             id: user._id,
         });
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         next(new AppErr(error.message, 500))
     }
 }
@@ -40,6 +40,7 @@ const registerUserController = async(req, res, next)=>{
 //login
 const userLoginController = async(req, res, next)=>{
     const { email, password } = req.body
+    console.log(req.body)
     try {
         //check if email exists
         const userFound = await User.findOne({email})
@@ -58,6 +59,7 @@ const userLoginController = async(req, res, next)=>{
             token: generateToken(userFound._id)
         })
     } catch (error) {
+        console.log(error)
         next(new AppErr(error.message, 500))
     }
 }
