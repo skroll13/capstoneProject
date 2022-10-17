@@ -21,13 +21,13 @@ const SearchPodcast = () => {
   }
 
   const handleInput = () => {
-    const client = Client({ apiKey: "0c384497ab0f499d826355875d1c708e" })
+    const client = Client({ apiKey: "5631722333164e85ba9baaa0c517ca49" })
 
     client
       .search({
         q: searchInput,
         sort_by_date: 0,
-        type: "episode",
+        type: "podcast",
         offset: 0,
         len_min: 10,
         len_max: 30,
