@@ -11,7 +11,6 @@ import { Provider } from 'react-redux'
 import Axios from 'axios'
 import thunk from "redux-thunk"
 
-
 import App from "./App"
 import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -62,7 +61,7 @@ root.render(
           </Routes>
         </BaseLayout>
       </Router>
-      
+
     </Provider>
     
     
