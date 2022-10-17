@@ -5,12 +5,13 @@ const { createFollowingController,
     updateFollowingController,
     getAllFollowingController
 } = require('../../controllers/following/followingController');
+const isLogin = require('../../middleware/isLogin');
 
 
 const followingRoute = express.Router()
 
 //POST/api/v1/following
-followingRoute.post("/", createFollowingController)
+followingRoute.post("/", isLogin, createFollowingController)
 
 //GET/api/v1/following/:id
 followingRoute.get("/:id", getOneFollowingController)

@@ -1,10 +1,12 @@
 const express = require('express')
+
 const { registerUserController, 
     userLoginController, 
     userProfileController, 
     deleteUserController, 
     updateUserController 
 } = require('../../controllers/users/usersController')
+const isLogin = require('../../middleware/isLogin')
 
 const usersRoute = express.Router()
 
@@ -14,13 +16,13 @@ usersRoute.post("/register", registerUserController)
 //POST/api/v1/users/login
 usersRoute.post("/login", userLoginController)
 
-//GET/api/v1/users/profile/:id
-usersRoute.get("/profile/:id", userProfileController)
+//GET/api/v1/users/profile
+usersRoute.get("/profile/", isLogin, userProfileController)
 
-//DELETE/api/v1/users/:id
-usersRoute.delete("/:id", deleteUserController)
+//DELETE/api/v1/users
+usersRoute.delete("/", isLogin, deleteUserController)
 
-//PUT/api/v1/users/:id
-usersRoute.put("/:id", updateUserController)
+//PUT/api/v1/users
+usersRoute.put("/", isLogin, updateUserController)
 
 module.exports = usersRoute;

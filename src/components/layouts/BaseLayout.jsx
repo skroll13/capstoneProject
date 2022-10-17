@@ -1,38 +1,78 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import Nav from "./Nav"
+
+import Menu from './Menu'
+
 
 const BaseLayout = props => {
   return (
     <>
+
       <h1 className='font-serif italic text-red-800'>
         Welcome to your Podcast Page
       </h1>
       <Nav />
+
+     <Menu  />
+{/* 
+
       <ul>
-        <li className='font-serif text-gray-500'>
-          <Link className='font-serif text-gray-500'to='/'>Home</Link>
-        </li>
-        <li className='bold font-serif text-purple-700'>
+        <li>
           {" "}
-          <Link className='bold font-serif text-purple-700'to='/register'>Register</Link>
-        </li>
-        <li className='font-serif text-purple-700'>
-          {" "}
-          <Link to='/login'>Login</Link>
+          <Link className='font-mono text-red-700' to='/'>
+            {" "}
+            Home
+          </Link>{" "}
         </li>
 
-        <li className='font-serif text-purple-700'>
+        <li>
           {" "}
-          <Link to='/searchpodcast'>Podcast</Link>
+          <Link className='font-mono text-red-700' to='/register'>
+            Register
+          </Link>
         </li>
-        <li className='font-serif text-purple-700'>
+
+        <li>
           {" "}
-          <Link to='/logout'>Logout</Link>
+          <Link className='font-mono text-red-700' to='/login'>
+            Login
+          </Link>
         </li>
-        {/* <li> <Link to='/deletepodcast'>Delete Podcast</Link></li> */}
-        {/* <li> <Link to='/addpodcast'>Save Podcast</Link></li> */}
-      </ul>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/searchpodcast'>
+            Podcast
+          </Link>
+        </li>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/customsearch'>
+            Custom Search
+          </Link>
+        </li>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/logout'>
+            Logout
+          </Link>
+        </li>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/tabs'>
+            Tabs
+          </Link>
+        </li>
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/menu'>
+            Menu
+          </Link>
+        </li>
+      </ul> */}
 
       {props.children}
     </>
