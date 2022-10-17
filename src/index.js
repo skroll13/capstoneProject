@@ -1,6 +1,6 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -9,6 +9,7 @@ import reducer from './reducers/reducer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Axios from 'axios'
+import thunk from "redux-thunk"
 
 
 import App from "./App"
@@ -31,10 +32,12 @@ const persistConfig = {
   storage
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
-const store = createStore(
-  persistedReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// const store = createStore(
+//   persistedReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// )
+let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE || compose;
+let store = createStore(reducer, {}, composeEnhancers(applyMiddleware(thunk)))
 let persistor = persistStore(store)
 
 
