@@ -1,4 +1,4 @@
-# You Are What You Listen To - a podcast tracker
+# You Are What You Listen To: a podcast tracker
 
 We believe that tracking podcasts, and find more that you enjoy, should be an easy endeavor. This fullstack application was built with React, NodeJS and mongoDB.
 
