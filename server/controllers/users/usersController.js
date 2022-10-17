@@ -1,9 +1,7 @@
 const bcrypt = require('bcryptjs')
-const { populate } = require('../../model/User')
 const User = require("../../model/User")
 const { AppErr, appErr } = require('../../utils/appErr')
 const generateToken = require('../../utils/generateToken')
-const verifyToken = require('../../utils/verifyToken')
 
 
 //register
@@ -15,6 +13,7 @@ const registerUserController = async(req, res, next)=>{
         const userFound = await User.findOne({ email })
         if(userFound){
             next(appErr('user already exists', 400))
+            return
         }
         //hash userpassword
         const salt = await bcrypt.genSalt(10);
@@ -33,12 +32,12 @@ const registerUserController = async(req, res, next)=>{
             id: user._id,
         });
     } catch (error) {
-        next(new Error(error))
+        next(new AppErr(error.message, 500))
     }
 }
 
 //login
-const userLoginController = async(req, res)=>{
+const userLoginController = async(req, res, next)=>{
     const { email, password } = req.body
     try {
         //check if email exists
@@ -58,12 +57,12 @@ const userLoginController = async(req, res)=>{
             token: generateToken(userFound._id)
         })
     } catch (error) {
-        next(AppErr)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //profile
-const userProfileController = async(req, res)=>{
+const userProfileController = async(req, res, next)=>{
     console.log(req.user)
     try {
         const user = await User.findById(req.user).populate({
@@ -76,25 +75,67 @@ const userProfileController = async(req, res)=>{
         })
         res.json(user)
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //delete
-const deleteUserController = async(req, res)=>{
+const deleteUserController = async(req, res, next)=>{
     try {
+        await User.findByIdAndDelete(req.user)
+        res.status(200).json({
+            status:"success",
+            data: null
+        })
         res.json({msg: 'Delete user route'})
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 
 //update
-const updateUserController = async(req, res)=>{
+const updateUserController = async(req, res, next)=>{
     try {
-        res.json({msg: 'Update user route'})
+        //check if email exists
+        if(req.body.email){
+        const userFound = await User.findOne({email: req.body.email})
+        if(userFound) return next(
+            new AppErr('email is taken by another user or you already have this email registered with us', 400)
+            )
+        }
+        //check if user is updating their password
+        if(req.body.password){
+            const salt = await bcrypt.genSalt(10)
+            const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+            //update the user
+            const user = await User.findByIdAndUpdate(
+                req.user,
+                {
+                password: hashedPassword,
+                },
+                {
+                new: true,
+                runValidators: true
+                }
+            )
+            //send response to the user
+            return res.status(200).json({
+                status:"success",
+                data: user
+            })
+        }
+        const user = await User.findByIdAndUpdate(req.user, req.body, {
+            new: true,
+            runValidators: true
+        })
+        //send response
+        res.status(200).json({
+            status:"success",
+            data: user
+        })
     } catch (error) {
-        res.json(error)
+        next(new AppErr(error.message, 500))
     }
 }
 

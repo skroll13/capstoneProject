@@ -42,6 +42,6 @@ const listenedSchema = new mongoose.Schema({
 })
 
 //model
-const Listened = mongoose.model("Following", listenedSchema)
+const Listened = mongoose.model("Listened", listenedSchema)
 
 module.exports = Listened;

@@ -4,12 +4,14 @@ const { createListenedController,
     getOneListenedController,
     deleteListenedController,
     updateListenedController
-    } = require('../../controllers/listened/listenedController')
+} = require('../../controllers/listened/listenedController')
+const isLogin = require('../../middleware/isLogin')
+
 
 const listenedRoute = express.Router()
 
 //POST/api/v1/listened
-listenedRoute.post("/", createListenedController)
+listenedRoute.post("/", isLogin, createListenedController)
 
 //GET/api/v1/listened
 listenedRoute.get("/", getAllListenedController)
