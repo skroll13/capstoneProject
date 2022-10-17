@@ -7,7 +7,7 @@ const generateToken = require('../../utils/generateToken')
 //register
 const registerUserController = async(req, res, next)=>{
     const { fullname, password, email } = req.body
-    // console.log('test')
+    console.log('test')
     try{
         //check if email exsists
         const userFound = await User.findOne({ email })
@@ -32,6 +32,7 @@ const registerUserController = async(req, res, next)=>{
             id: user._id,
         });
     } catch (error) {
+        console.log(error)
         next(new AppErr(error.message, 500))
     }
 }

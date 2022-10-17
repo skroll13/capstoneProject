@@ -2,29 +2,45 @@ import React, {useState, useContext} from "react"
 import { Link } from 'react-router-dom'
 import { authContext } from '../context/AuthContext'
 import Axios from 'axios'
+import { useDispatch } from "react-redux"
+import { useNavigate } from 'react-router-dom'
+import { register } from "../actions/actions"
 
 
 const Register = () => {
 
-  const [fullName, setFullName] = useState()
+  const [fullname, setFullName] = useState()
   const [password, setPassword] = useState()
   const [email, setEmail] = useState()
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+
+  //this is Yvonne's code:
+  // async function handleSubmit(e) {
+  //   e.preventDefault()
     
-    try {
-     await Axios.post('http://localhost:9000/register', {
-      fullName,
-      password,
-      email
-     })
-     console.log('Registration is complete.')
-    } 
-    catch (e) {
-      console.log('There was an error with your registration.')
+  //   try {
+  //    await Axios.post('http://localhost:9000/register', {
+  //     fullName,
+  //     password,
+  //     email
+  //    })
+  //    console.log('Registration is complete.')
+  //   } 
+  //   catch (e) {
+  //     console.log('There was an error with your registration.')
       
-    }
+  //   }
+  // }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(register({fullname, email, password}, ()=>{
+       navigate('/login')
+    }))
   }
   return (
     <>
