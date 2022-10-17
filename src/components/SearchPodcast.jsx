@@ -50,6 +50,7 @@ const SearchPodcast = () => {
 
   return (
     <>
+    <br  />
       <div className='search'>
         <input
           className='text-green-800'
@@ -57,7 +58,8 @@ const SearchPodcast = () => {
           type='text'
           placeholder='Podcast or Episode'
         />
-
+      <br  />
+      <br  />
         <button
           className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
           onClick={handleInput}
