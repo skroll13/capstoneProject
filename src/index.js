@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createStore } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
@@ -9,7 +9,7 @@ import reducer from './reducers/reducer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Axios from 'axios'
-import { ThemeProvider } from "@material-tailwind/react"
+
 
 import App from "./App"
 import './index.css';
@@ -21,6 +21,9 @@ import SearchPodcast from './components/SearchPodcast'
 import AddPodcast from './components/AddPodcast'
 import DeletePodcast  from './components/DeletePodcast';
 import Logout from './components/Logout'
+import CustomSearch from './components/listenNotesTemplates/CustomSearch'
+import Tabs from './components/Tabs'
+import Menu  from './components/layouts/Menu'
 
 
 const persistConfig = {
@@ -38,8 +41,9 @@ let persistor = persistStore(store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+  
     <Provider store={store}>
-    <ThemeProvider>
+   
       <Router>
         <BaseLayout>
           <Routes>
@@ -47,15 +51,18 @@ root.render(
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/searchpodcast" element={<SearchPodcast />}></Route>
-            <Route path="/addpodcast" element={<AddPodcast />}></Route>
-            <Route path="/deletepodcast" element={<DeletePodcast />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
+            <Route path="/customsearch" element={<CustomSearch />} />
+            <Route path="/tabs" element={<Tabs  />} />
+            <Route path="/menu" element={<Menu />} />
+            
           </Routes>
         </BaseLayout>
       </Router>
-      </ThemeProvider>
+      
     </Provider>
-    <App />
+    
+    
   </>
 )
 
