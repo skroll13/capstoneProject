@@ -1,12 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import Menu from './Menu'
 // import Nav from "./Nav"
 
 const BaseLayout = props => {
   return (
     <>
-      <h1 className='font-mono text-red-700'>Welcome to Your Podcasts</h1>
-
+     <Menu  />
+{/* 
       <ul>
         <li>
           {" "}
@@ -50,7 +51,20 @@ const BaseLayout = props => {
             Logout
           </Link>
         </li>
-      </ul>
+
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/tabs'>
+            Tabs
+          </Link>
+        </li>
+        <li>
+          {" "}
+          <Link className='font-mono text-red-700' to='/menu'>
+            Menu
+          </Link>
+        </li>
+      </ul> */}
 
       {props.children}
     </>

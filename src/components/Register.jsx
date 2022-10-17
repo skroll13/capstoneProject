@@ -12,15 +12,16 @@ const Register = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
+    
     try {
-     await Axios.post('/register', {
+     await Axios.post('http://localhost:9000/register', {
       fullName,
       password,
       email
      })
      console.log('Registration is complete.')
     } 
-    catch (error) {
+    catch (e) {
       console.log('There was an error with your registration.')
       
     }
@@ -80,9 +81,9 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block"
+              className="font-mono py-20 mt-4 btn btn-lg btn-danger btn-block"
             >
-              Your Podcasts
+              Submit
             </button>
           </form>
         </div>

@@ -22,6 +22,8 @@ import AddPodcast from './components/AddPodcast'
 import DeletePodcast  from './components/DeletePodcast';
 import Logout from './components/Logout'
 import CustomSearch from './components/listenNotesTemplates/CustomSearch'
+import Tabs from './components/Tabs'
+import Menu  from './components/layouts/Menu'
 
 
 const persistConfig = {
@@ -50,7 +52,10 @@ root.render(
             <Route path="/login" element={<Login />}></Route>
             <Route path="/searchpodcast" element={<SearchPodcast />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
-            <Route path="/customsearch" element={<CustomSearch />}></Route>
+            <Route path="/customsearch" element={<CustomSearch />} />
+            <Route path="/tabs" element={<Tabs  />} />
+            <Route path="/menu" element={<Menu />} />
+            
           </Routes>
         </BaseLayout>
       </Router>

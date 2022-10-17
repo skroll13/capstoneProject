@@ -9,7 +9,7 @@ const Header = () => {
         <div className='d-flex flex-column flex-md-row align-items-center container p-3'>
           <h1 className='mr-md-auto font-weight-normal my-0'>
             <Link to='/' className='text-white'>
-              Let's Talk
+              Your Podcasts
             </Link>
           </h1>
           {appState.loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />}

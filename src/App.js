@@ -6,6 +6,7 @@ function App() {
   return (
       <>
     
+     {/* <h1 className='font-mono text-red-700'>Welcome to Your Podcasts</h1> */}
 
       <img  src={pic} value="mohammad-metri-1oKxSKSOowE-unsplash" alt="neon sign"/>
       <div>
