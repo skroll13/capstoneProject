@@ -2,10 +2,7 @@ const Listened = require("../../model/Listened");
 const User = require("../../model/User");
 const { AppErr } = require("../../utils/appErr");
 
-
-
 //create
-
 const createListenedController = async(req, res, next)=>{
     const {episodeName, podcastName, image, audioLink, wantToFollow, listenedTo, notes} = req.body 
     try {

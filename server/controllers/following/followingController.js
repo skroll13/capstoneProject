@@ -2,8 +2,6 @@ const Following = require("../../model/Following")
 const User = require("../../model/User");
 const { AppErr } = require("../../utils/appErr");
 
-
-
 //create
 const createFollowingController = async(req, res, next)=>{
     const {episodeName, podcastName, image, audioLink, wantToFollow, listenedTo, notes} = req.body 
