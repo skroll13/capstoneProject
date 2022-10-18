@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+// import { useDispatch } from "react-redux"
 // import { addToFollowing } from "../actions/actions"
 import axios from "axios"
 // import { Button } from "@material-tailwind/react"
@@ -11,7 +11,7 @@ const SearchPodcast = () => {
   const [searchInput, setSearchInput] = useState()
   const [searchResults, setSearchResults] = useState([])
 
-  const dispatch = useDispatch() //initializing hook
+  // const dispatch = useDispatch() //initializing hook
 
   //Once I have database info, will send via Axios
   const saveToFollowing = podcastObj => {
