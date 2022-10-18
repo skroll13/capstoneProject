@@ -9,6 +9,10 @@ const BaseLayout = props => {
     <>
      <Menu  />
 
+
+
+      {/* this is putting the Menu on every page so keep this line */}
+
       {props.children}
     </>
   )
