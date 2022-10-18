@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const Following = () => {
   const [followedPodcast, setFollowedPodcast] = useState([])
+  const [triggerRefresh, setTriggerRefresh] = useState(false)
 
   useEffect(() => {
     const followPodcast = async () => {
@@ -18,25 +19,36 @@ const Following = () => {
       }
     }
     followPodcast()
-  }, [])
+  }, [triggerRefresh])
 
   console.log(followedPodcast)
+    
+    const deletePodcast = (id) => {
+      axios.delete(`api/v1/following/${id}`)
+      setTriggerRefresh(!triggerRefresh)
+      console.log(id)
+    } 
+    const updateNotes = id => {
+  axios.update(`api/v1/following/${id}`)
+  // setTriggerRefresh(!triggerRefresh)
+  console.log(id)
+}
 
   return (
     <>
       {!followedPodcast ? (
         <div>No podcasts to display</div>
       ) : (
-        followedPodcast.map(newPodcast => {
+        followedPodcast.map(podcastObj => {
           return (
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />{' '}
-              <button onClick={() => saveToFollowing(podcastObj)}>
-                Save to Listened
-              </button>
-              <button onClick={() => saveToListened(podcastObj)}>
-                Save to Listened
-              </button>
+              <button onClick={() => deletePodcast(podcastObj.id)}>Delete Podcast</button>
+              <button onClick={() => updateNotes(podcastObj.id)}>Update Notes</button>
+
+             
+             
+              
             </>
           )
         })
