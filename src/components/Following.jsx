@@ -31,6 +31,12 @@ const Following = () => {
           return (
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />{' '}
+              <button onClick={() => saveToListened(podcastObj)}>
+                Save to Listened
+              </button>
+              <button onClick={() => saveToListened(podcastObj)}>
+                Save to Listened
+              </button>
             </>
           )
         })

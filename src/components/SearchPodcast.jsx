@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-// import { useDispatch } from "react-redux"
-// import { addToFollowing } from "../actions/actions"
+
 import axios from "axios"
 // import { Button } from "@material-tailwind/react"
 
@@ -24,7 +23,8 @@ const SearchPodcast = () => {
   listenedTo: false,
   notes:podcastObj.description_original
 }
-    axios.post("/api/v1/following", newPodcast)
+    axios.post("/api/v1/following", {headers:{'authorization': "634ea1b9aa7d3ecb3027644d"},
+body:newPodcast} )
     console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
   }
@@ -34,7 +34,7 @@ const saveToListened = (podcastObj) => {
     podcastName: podcastObj.podcast.title_original,
     image:podcastObj.image,
     audioLink:podcastObj.audio,
-    wantToFollow: false,
+    wantToFollow: true,
     listenedTo: false,
     notes:podcastObj.description_original
   }
@@ -92,6 +92,7 @@ const saveToListened = (podcastObj) => {
               <button onClick={() => saveToFollowing(podcastObj)}>Save to Following</button>
 
                <button onClick={() => saveToListened(podcastObj)}>Save to Listened</button>
+            
             
             </>
 
