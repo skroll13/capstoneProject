@@ -1,7 +1,8 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
 
+import { addToFollowing } from "../actions/actions"
 import axios from "axios"
-// import { Button } from "@material-tailwind/react"
 
 
 const { Client } = require('podcast-api')
@@ -75,6 +76,7 @@ const saveToListened = (podcastObj) => {
           type='text'
           placeholder='Podcast or Episode'
         />
+
       <br  />
       <br  />
         <button
@@ -83,6 +85,7 @@ const saveToListened = (podcastObj) => {
           type='submit'>
           Search
         </button>
+
       </div>
 
       {!searchResults ? (<div></div>) : (searchResults.map(podcastObj => {

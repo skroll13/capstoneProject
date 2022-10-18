@@ -1,24 +1,23 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 //connect to mongoose
-mongoose
-  .connect(
-    'mongodb+srv://Spicy-Jalapeno-Poppers:7iwi2JuxYov6xFyv@mongoldb-demo.efcgcbf.mongodb.net/school?retryWrites=true&w=majority'
-  )
-  .then(() => console.log('db connected'))
-  .catch(err => console.log(err.message))
+mongoose.connect(
+    "mongodb+srv://Spicy-Jalapeno-Poppers:7iwi2JuxYov6xFyv@mongoldb-demo.efcgcbf.mongodb.net/school?retryWrites=true&w=majority"
+)
+.then(() => console.log("db connected"))
+.catch(err => console.log(err.message));
 
 //schema
 const studentSchema = new mongoose.Schema({
-  name: String,
-  city: String,
-  courses: Array,
-  isMarried: Boolean,
-  age: Number
+    name: String,
+    city: String,
+    courses: Array,
+    isMarried: Boolean,
+    age: Number,
 })
 
 //model
-const Student = mongoose.model('Student', studentSchema)
+const Student = mongoose.model("Student", studentSchema)
 
 //create student
 // Student.create({
@@ -54,8 +53,8 @@ const Student = mongoose.model('Student', studentSchema)
 
 //update record
 // Student.findOneAndUpdate(
-//     {name: "John"},
-//     {age: 35},
+//     {name: "John"}, 
+//     {age: 35}, 
 //     {
 //     new: true,
 //     }
@@ -64,11 +63,11 @@ const Student = mongoose.model('Student', studentSchema)
 // .catch(err =>console.log(err))
 
 Student.findByIdAndUpdate(
-  '6345a225b4a474f8adf9d208',
-  { age: 55 },
-  {
-    new: true
-  }
+    "6345a225b4a474f8adf9d208", 
+    {age: 55}, 
+    {
+    new: true,
+    }
 )
-  .then(student => console.log(student))
-  .catch(err => console.log(err))
+.then(student => console.log(student))
+.catch(err =>console.log(err))

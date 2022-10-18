@@ -1,6 +1,6 @@
-import './actionTypes'
-import axios from 'axios'
-import { actionTypes } from './actionTypes'
+import './actionTypes';
+import axios from 'axios';
+import { actionTypes } from './actionTypes';
 
 export const addToFollowing = podcastObj => {
   console.log(podcastObj)
@@ -22,15 +22,15 @@ export const fetchProfileSuccess = second => {}
 
 export const registerSuccess = second => {}
 
-export const registerFail = second => {}
-
+export const registerFail = (second) => {}
+  
 export const register = (formData, cb) => async dispatch => {
   try {
     //api call to our backend
     let response = await axios.post('/api/v1/users/register', formData)
-    let jwt = response.data.token
-    console.log('data retrieved from the server')
-
+    let jwt = response.data.token 
+    console.log("data retrieved from the server")
+    
     //take response from api call, store token in global storage
     dispatch({
       type: actionTypes.LOAD_USER_TOKEN,
@@ -49,7 +49,7 @@ export const register = (formData, cb) => async dispatch => {
   }
 }
 
-export const login = (formData, cb) => async dispatch => {
+export const login = (formData, cb) => async dispatch =>{
   try {
     //make an api call to /login
     let response = await axios.post('/api/v1/users/login', formData)
@@ -64,6 +64,7 @@ export const login = (formData, cb) => async dispatch => {
     localStorage.setItem('token', token)
 
     cb()
+
   } catch (err) {
     dispatch({
       type: actionTypes.ERROR,
@@ -72,10 +73,10 @@ export const login = (formData, cb) => async dispatch => {
   }
 }
 
-export const logout = cb => dispatch => {
+export const logout = (cb) => dispatch => {
   dispatch({
     type: actionTypes.LOAD_USER_TOKEN,
-    data: ''
+    data: ""
   })
 
   //clear local storage
@@ -83,4 +84,3 @@ export const logout = cb => dispatch => {
 
   cb()
 }
-
