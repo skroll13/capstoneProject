@@ -4,6 +4,7 @@ const { AppErr } = require("../../utils/appErr");
 
 //create
 const createFollowingController = async(req, res, next)=>{
+    // console.log(request.body)
     const {episodeName, podcastName, image, audioLink, wantToFollow, listenedTo, notes} = req.body 
     try {
         //1. find the logged in user

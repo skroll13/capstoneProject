@@ -1,9 +1,7 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-
-import { addToFollowing } from "../actions/actions"
-import axios from "axios"
-
+import React, { useState } from 'react'
+// import { useDispatch } from "react-redux"
+import axios from 'axios'
+// import data from '../data'
 
 const { Client } = require('podcast-api')
 
@@ -11,33 +9,48 @@ const SearchPodcast = () => {
   const [searchInput, setSearchInput] = useState()
   const [searchResults, setSearchResults] = useState([])
 
-  const dispatch = useDispatch() //initializing hook
+  // const dispatch = useDispatch() //initializing hook
 
   //Once I have database info, will send via Axios
   const saveToFollowing = podcastObj => {
-
-    axios.post("/followingRoute", podcastObj)
-
-    console.log(podcastObj)
+    let newPodcast = {
+      episodeName: podcastObj.podcast.title_original,
+      podcastName: podcastObj.podcast.title_original,
+      image: podcastObj.image,
+      audioLink: podcastObj.audio,
+      wantToFollow: true,
+      listenedTo: false,
+      notes: podcastObj.description_original
+    }
+    axios.post('/api/v1/following', {
+      headers: { authorization: '634ea1b9aa7d3ecb3027644d' },
+      body: newPodcast
+    })
+    console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
+  }
+  const saveToListened = podcastObj => {
+    let newPodcast = {
+      episodeName: podcastObj.podcast.title_original,
+      podcastName: podcastObj.podcast.title_original,
+      image: podcastObj.image,
+      audioLink: podcastObj.audio,
+      wantToFollow: true,
+      listenedTo: false,
+      notes: podcastObj.description_original
+    }
+    axios.post('/api/v1/following', newPodcast)
+    console.log(newPodcast)
   }
 
   const handleInput = () => {
-    const client = Client({ apiKey: "5631722333164e85ba9baaa0c517ca49" })
+    const client = Client({ apiKey: '5631722333164e85ba9baaa0c517ca49' })
 
     client
       .search({
         q: searchInput,
         sort_by_date: 0,
-        type: "podcast",
-        offset: 0,
-        len_min: 10,
-        len_max: 30,
-        published_before: 1580172454000,
-        published_after: 0,
-        language: "English",
-        safe_mode: 0,
-        unique_podcasts: 0
+        type: 'episode'
       })
       .then(response => {
         // Get response json data here
@@ -52,7 +65,7 @@ const SearchPodcast = () => {
 
   return (
     <>
-    <br  />
+      <br />
       <div className='search'>
         <input
           className='text-green-800'
@@ -61,15 +74,15 @@ const SearchPodcast = () => {
           placeholder='Podcast or Episode'
         />
 
-      <br  />
-      <br  />
+        <br />
+        <br />
         <button
           className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
           onClick={handleInput}
-          type='submit'>
+          type='submit'
+        >
           Search
         </button>
-
       </div>
 
       {!searchResults ? (
@@ -78,139 +91,19 @@ const SearchPodcast = () => {
         searchResults.map(podcastObj => {
           return (
             <>
-              <img src={podcastObj.image} alt='' />{" "}
-              <button onClick={() => saveToFollowing(podcastObj)}>Save</button>
-
-
-              <div class='mx-auto max-w-2xl'>
-                <form>
-                  <div class='group relative z-0 mb-6 w-full'>
-                    <input
-                      type='email'
-                      name='floating_email'
-                      class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                      placeholder=' '
-                      required
-                    />
-                    <label
-                      for='floating_email'
-                      class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                      Email address
-                    </label>
-                  </div>
-                  <div class='group relative z-0 mb-6 w-full'>
-                    <input
-                      type='password'
-                      name='floating_password'
-                      id='floating_password'
-                      class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                      placeholder=' '
-                      required
-                    />
-                    <label
-                      for='floating_password'
-                      class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                      Password
-                    </label>
-                  </div>
-                  <div class='group relative z-0 mb-6 w-full'>
-                    <input
-                      type='password'
-                      name='repeat_password'
-                      id='floating_repeat_password'
-                      class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                      placeholder=' '
-                      required
-                    />
-                    <label
-                      for='floating_repeat_password'
-                      class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                      Confirm password
-                    </label>
-                  </div>
-                  <div class='grid xl:grid-cols-2 xl:gap-6'>
-                    <div class='group relative z-0 mb-6 w-full'>
-                      <input
-                        type='text'
-                        name='floating_first_name'
-                        id='floating_first_name'
-                        class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                        placeholder=' '
-                        required
-                      />
-                      <label
-                        for='floating_first_name'
-                        class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                        First name
-                      </label>
-                    </div>
-                    <div class='group relative z-0 mb-6 w-full'>
-                      <input
-                        type='text'
-                        name='floating_last_name'
-                        id='floating_last_name'
-                        class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                        placeholder=' '
-                        required
-                      />
-                      <label
-                        for='floating_last_name'
-                        class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                        Last name
-                      </label>
-                    </div>
-                  </div>
-                  <div class='grid xl:grid-cols-2 xl:gap-6'>
-                    <div class='group relative z-0 mb-6 w-full'>
-                      <input
-                        type='tel'
-                        pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                        name='floating_phone'
-                        id='floating_phone'
-                        class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                        placeholder=' '
-                        required
-                      />
-                      <label
-                        for='floating_phone'
-                        class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                        Phone number (123-456-7890)
-                      </label>
-                    </div>
-                    <div class='group relative z-0 mb-6 w-full'>
-                      <input
-                        type='text'
-                        name='floating_company'
-                        id='floating_company'
-                        class='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500'
-                        placeholder=' '
-                        required
-                      />
-                      <label
-                        for='floating_company'
-                        class='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'>
-                        Company (Ex. Google)
-                      </label>
-                    </div>
-                  </div>
-                  <button
-                    type='submit'
-                    class='w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto'>
-                    Submit
+              <container>
+              <div class="btn-group mr-2" role="group" aria-label="Basic example">
+                <img src={podcastObj.image} alt='' />{' '}
+                <button type='button' class='btn btn-outline-danger btn-small'>
+                  <button onClick={() => saveToFollowing(podcastObj)}>
+                    Save to Following
                   </button>
-                </form>
-
-                <p class='mt-5'>
-                  Check out the original floating label form elements on{" "}
-                  <a
-                    class='text-blue-600 hover:underline'
-                    href='#'
-                    target='_blank'>
-                    Flowbite
-                  </a>{" "}
-                  and browse other similar components built with Tailwind CSS.
-                </p>
-              </div>
+                  <button onClick={() => saveToListened(podcastObj)}>
+                    Save to Listened
+                  </button>
+                </button>
+                </div>
+              </container>
             </>
           )
         })

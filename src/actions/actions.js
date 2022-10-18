@@ -2,25 +2,25 @@ import './actionTypes';
 import axios from 'axios';
 import { actionTypes } from './actionTypes';
 
-export const addToFollowing = (podcastObj) => {
+export const addToFollowing = podcastObj => {
   console.log(podcastObj)
   return {
-  type: "ADD_TO_FOLLOWING",
-  data: podcastObj
+    type: 'ADD_TO_FOLLOWING',
+    data: podcastObj
   }
 }
 
-export const loginSuccess  = (second) => {} 
+export const loginSuccess = second => {}
 
-export const loginFailed = (second) => {}
+export const loginFailed = second => {}
 
-export const fetchProfileFail = (second) => {}
+export const fetchProfileFail = second => {}
 
-export const fetchProfileSuccess = (second) => {}
+export const fetchProfileSuccess = second => {}
 
 // export const logout = (second) => {}
 
-export const registerSuccess = (second) => {}
+export const registerSuccess = second => {}
 
 export const registerFail = (second) => {}
   
