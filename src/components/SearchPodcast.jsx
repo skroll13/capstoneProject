@@ -112,4 +112,4 @@ const SearchPodcast = () => {
   )
 }
 
-export default SearchPodcast
+export default SearchPodcastt
