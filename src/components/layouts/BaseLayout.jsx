@@ -14,66 +14,8 @@ const BaseLayout = props => {
       <Nav />
 
      <Menu  />
-{/* 
-
-      <ul>
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/'>
-            {" "}
-            Home
-          </Link>{" "}
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/register'>
-            Register
-          </Link>
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/login'>
-            Login
-          </Link>
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/searchpodcast'>
-            Podcast
-          </Link>
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/customsearch'>
-            Custom Search
-          </Link>
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/logout'>
-            Logout
-          </Link>
-        </li>
-
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/tabs'>
-            Tabs
-          </Link>
-        </li>
-        <li>
-          {" "}
-          <Link className='font-mono text-red-700' to='/menu'>
-            Menu
-          </Link>
-        </li>
-      </ul> */}
-
+     
+      {/* this is putting the Menu on every page so keep this line */}
       {props.children}
     </>
   )
