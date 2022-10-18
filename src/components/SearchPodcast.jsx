@@ -22,9 +22,9 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-    axios.post('/api/v1/following', {
-      headers: { authorization: '634ea1b9aa7d3ecb3027644d' },
-      body: newPodcast
+    axios.post('/api/v1/following', newPodcast, {
+      headers: { 'authorization': localStorage.token },
+      
     })
     console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
@@ -65,6 +65,9 @@ const SearchPodcast = () => {
 
   return (
     <>
+      <br />
+      <br />
+      <br />
       <br />
       <div className='search'>
         <input

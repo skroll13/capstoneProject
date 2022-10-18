@@ -27,16 +27,13 @@ const Following = () => {
       {!followedPodcast ? (
         <div>No podcasts to display</div>
       ) : (
-        followedPodcast.map(newPodcast => {
+        followedPodcast.map(podcastObj => {
           return (
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />{' '}
-              <button onClick={() => saveToFollowing(podcastObj)}>
-                Save to Listened
-              </button>
-              <button onClick={() => saveToListened(podcastObj)}>
-                Save to Listened
-              </button>
+             
+             
+              
             </>
           )
         })
