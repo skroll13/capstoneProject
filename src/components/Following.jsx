@@ -28,6 +28,12 @@ const Following = () => {
       setTriggerRefresh(!triggerRefresh)
       console.log(id)
     } 
+    const updateNotes = id => {
+  axios.update(`api/v1/following/${id}`)
+  // setTriggerRefresh(!triggerRefresh)
+  console.log(id)
+}
+
   return (
     <>
       {!followedPodcast ? (
@@ -38,6 +44,7 @@ const Following = () => {
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />{' '}
               <button onClick={() => deletePodcast(podcastObj.id)}>Delete Podcast</button>
+              <button onClick={() => updateNotes(podcastObj.id)}>Update Notes</button>
 
              
              
