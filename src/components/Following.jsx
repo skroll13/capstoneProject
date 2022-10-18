@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const Following = () => {
   const [followedPodcast, setFollowedPodcast] = useState([])
+  const [triggerRefresh, setTriggerRefresh] = useState(false)
 
   useEffect(() => {
     const followPodcast = async () => {
@@ -18,10 +19,15 @@ const Following = () => {
       }
     }
     followPodcast()
-  }, [])
+  }, [triggerRefresh])
 
   console.log(followedPodcast)
-
+    
+    const deletePodcast = (id) => {
+      axios.delete(`api/v1/following/${id}`)
+      setTriggerRefresh(!triggerRefresh)
+      console.log(id)
+    } 
   return (
     <>
       {!followedPodcast ? (
@@ -31,6 +37,8 @@ const Following = () => {
           return (
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />{' '}
+              <button onClick={() => deletePodcast(podcastObj.id)}>Delete Podcast</button>
+
              
              
               
