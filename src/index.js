@@ -20,10 +20,7 @@ import Login from './components/Login'
 import SearchPodcast from './components/SearchPodcast'
 import Following from './components/Following'
 import Listened from './components/Listened'
-
-
 import Logout from './components/Logout'
-
 import Menu from './components/layouts/Menu'
 
 // const persistConfig = {

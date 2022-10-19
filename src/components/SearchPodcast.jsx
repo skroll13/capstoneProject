@@ -76,7 +76,7 @@ const SearchPodcast = () => {
           type='text'
           placeholder='Podcast or Episode'
         />
-
+  {""}
         <br />
         <br />
         <button
