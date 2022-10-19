@@ -10,19 +10,12 @@ export const addToFollowing = podcastObj => {
   }
 }
 
-export const loginSuccess = second => {}
-
-export const loginFailed = second => {}
-
-export const fetchProfileFail = second => {}
-
-export const fetchProfileSuccess = second => {}
-
-// export const logout = (second) => {}
-
-export const registerSuccess = second => {}
-
-export const registerFail = (second) => {}
+export const UpdateListened = newPodcast => {
+  return {
+    type: "EDIT_UPDATE",
+    data: newPodcast
+  }
+}
   
 export const register = (formData, cb) => async dispatch => {
   try {

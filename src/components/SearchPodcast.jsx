@@ -22,7 +22,7 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-    axios.post('/api/v1/following', newPodcast, {
+    axios.post('/api/v1/following/', newPodcast, {
       headers: { 'authorization': localStorage.token },
       
     })
@@ -39,7 +39,7 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-    axios.post('/api/v1/following', newPodcast)
+    axios.post('/api/v1/listened', newPodcast)
     console.log(newPodcast)
   }
 
@@ -96,15 +96,30 @@ const SearchPodcast = () => {
             <>
               <container>
               <div class="btn-group mr-2" role="group" aria-label="Basic example">
-                <img src={podcastObj.image} alt='' />{' '}
-                <button type='button' class='btn btn-outline-danger btn-small'>
-                  <button onClick={() => saveToFollowing(podcastObj)}>
-                    Save to Following
-                  </button>
-                  <button onClick={() => saveToListened(podcastObj)}>
-                    Save to Listened
-                  </button>
-                </button>
+                              <img src={podcastObj.image} alt='' />{' '}
+
+                              <div className="button">
+                              {" "}
+                                <button type='button' class='btn btn-outline-danger btn-small'>
+                                      <button onClick={() => saveToFollowing(podcastObj)}>
+                                        Save to Following
+                                      </button> 
+                                </button>
+                                <br  />
+                                {" "}
+                              </div>
+
+
+                              <div className="buton">
+                             {" "}
+                                <button type='button' class='btn btn-outline-danger btn-small'>
+                                <button onClick={() => saveToListened(podcastObj)}>
+                                  Save to Listened
+                                </button>
+                                </button>
+                              </div>
+                             
+                              
                 </div>
               </container>
             </>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
+// import { useNavigate } from 'react-router-dom'
 
 const Following = () => {
   const [followedPodcast, setFollowedPodcast] = useState([])
@@ -30,20 +30,20 @@ const Following = () => {
     setTriggerRefresh(!triggerRefresh)
     console.log(id)
   }
-  const UpdateNotes = id => {
-    axios.update(`api/v1/following/${id}`)
+  // const UpdateNotes = id => {
+  //   axios.update(`api/v1/following/${id}`)
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  //   // const dispatch = useDispatch()
+  //   // const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
+  //   // const handleSubmit = (e) => {
+  //   //   e.preventDefault()
 
-      dispatch(UpdateNotes)
-    }
-    // setTriggerRefresh(!triggerRefresh)
-    console.log(id)
-  }
+  //   //   dispatch(UpdateNotes)
+  //   // }
+  //   // setTriggerRefresh(!triggerRefresh)
+  //   console.log(id)
+  // }
 
   return (
     <>
@@ -63,7 +63,7 @@ const Following = () => {
               </button>{' '}
               <button
                 className='font-mono py-10 mt-16 btn btn-small btn-danger btn-block'
-                onClick={() => updateNotes(podcastObj.id)}
+                onClick={() => deletePodcast(podcastObj.id)}
               >
                 Update Notes
               </button>
