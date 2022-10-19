@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:9000",
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -38,7 +40,7 @@
     "extends": [
       "react-app",
       "react-app/jest",
-       "eslint:recommended"
+      "eslint:recommended"
     ]
   },
   "browserslist": {
