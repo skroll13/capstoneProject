@@ -6,27 +6,17 @@ img{
   background: url("https://mohammad-metri-1oKxSKSOowE-unsplash.jpg") no-repeat center fixed;
   background-size: auto;
 }
-body{
+/* body{
   margin: 0;
   padding: 0;
 
-  /** background image */
+  
   background-image: url("./assets/mohammad-metri-1oKxSKSOowE-unsplash.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-}
-/* 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 } */
+
+body{
+  margin: 100px;
+}

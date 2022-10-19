@@ -23,21 +23,23 @@ const Register = () => {
 
   return (
     <>
-      <div className='row align-items-center'>
+      <div className='ml-10 mr-10 '>
         <div className='col-lg-7 py-3 py-md-5'>
-          <h1 className='font-mono text-red-700'>Register</h1>
-          <p className='font-mono'>
+          <h1 className='font-mono text-red-700 mt-10 justify-center'>Register</h1>
+          <br  />
+          <p className='font-mono col-lg-5    '>
             Once registered, you will be able to search for episodes of your
             favorite podcast, save episodes to listen to in the future and keep
             track of episodes you have already heard.
           </p>
         </div>
-        <div className='font-mono col-lg-5 pl-lg-5 pb-3 py-lg-5'>
+       
+        {/* <div className='font-mono grid-cols-3'> */}
+        <div className='font-mono col-lg-5 pl-lg-5 pb-23 py-lg-5'>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
-              <label htmlFor='register' className='text-muted mb-1'>
-                <small>Name</small>
-              </label>
+              
+              
               <input
                 onChange={e => setFullName(e.target.value)}
                 id='fullName-register'
@@ -48,24 +50,22 @@ const Register = () => {
                 autoComplete='off'
               />
             </div>
+            <br />
             <div className='form-group'>
-              <label htmlFor='email-register' className='text-muted mb-1'>
-                <small>Email</small>
-              </label>
+            {""}
               <input
                 onChange={e => setEmail(e.target.value)}
                 id='email-register'
                 name='email'
                 className='form-control'
                 type='text'
-                placeholder='you@example.com'
+                placeholder='Enter your email '
                 autoComplete='off'
               />
             </div>
+            <br  />
             <div className='form-group'>
-              <label htmlFor='password-register' className='text-muted mb-1'>
-                <small>Password</small>
-              </label>
+             
               <input
                 onChange={e => setPassword(e.target.value)}
                 id='password-register'

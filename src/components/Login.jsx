@@ -1,7 +1,5 @@
 import React, {useState } from "react"
 // import { Link } from "react-router-dom";  //this will be used if we link out to the registration page
-// import Axios from 'axios'
-// import Form from 'react-bootstrap/Form'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from "../actions/actions"; 
@@ -23,19 +21,9 @@ const Login = () => {
     }))
   }
 
-
-
-
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
+    
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
