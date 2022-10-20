@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../actions/actions'
 
+
+
 const Register = () => {
   const [fullname, setFullName] = useState()
   const [password, setPassword] = useState()
@@ -16,6 +18,7 @@ const Register = () => {
     e.preventDefault()
     dispatch(
       register({ fullname, email, password }, () => {
+        console.log("User was successfully created")
         navigate('/login')
       })
     )
@@ -66,6 +69,8 @@ const Register = () => {
             <br  />
             <div className='form-group'>
              
+
+
               <input
                 onChange={e => setPassword(e.target.value)}
                 id='password-register'

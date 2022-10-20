@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
-  background: url("https://mohammad-metri-1oKxSKSOowE-unsplash.jpg") no-repeat center fixed;
-  background-size: auto;
+.image-fluid{
+  width: 100vw;
+  height:100vh;
 }
 /* body{
   margin: 0;
@@ -17,6 +17,3 @@ img{
   background-size: cover;
 } */
 
-body{
-  margin: 100px;
-}

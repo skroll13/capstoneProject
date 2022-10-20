@@ -5,13 +5,16 @@ export const types = {
    'FETCH_PROFILE_SUCCESS' : 'FETCH_PROFILE_SUCCESS',
    'LOGOUT' : 'LOGOUT',
    'REGISTER_SUCCESS' : 'REGISTER_SUCCESS',
-   'REGISTER_FAIL' : 'REGISTER_FAIL'
+   'REGISTER_FAIL' : 'REGISTER_FAIL',
+   
 
 }
 
 export const actionTypes = {
    LOAD_USER_TOKEN: "LOAD_USER_TOKEN",
-   ERROR: "ERROR"
+   ERROR: "ERROR",
+   EDIT_UPDATE: "EDIT_UPDATE"
 };
+
 
  
