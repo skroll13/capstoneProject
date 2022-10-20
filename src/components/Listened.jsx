@@ -4,8 +4,8 @@ import Update from '../components/UpdateListened'
 
 const Listened = () => {
   const [listenedPodcast, setListenedPodcast] = useState([])
-  const [triggerRefresh, setTriggerRefresh] = useState(false)
-  const [isUpdate, setIsUpdate] = useState(false)
+  const [triggerRefresh, setTriggerRefresh] = useState()
+  const [isUpdate, setIsUpdate] = useState('')
 
   useEffect(() => {
     const heardPodcast = async () => {
@@ -31,15 +31,26 @@ const Listened = () => {
     setTriggerRefresh(!triggerRefresh)
     // console.log(id)
   }
+const updatePodcast = id => {
+  axios.put(`api/v1/listened/${id}`)
+  setTriggerRefresh(!triggerRefresh)
+  console.log(id)
+}
 
   return (
     <>
+    <br  />
+    <br  />
+    <br  />
+    <h1>Listened</h1>
       {!listenedPodcast ? (
         <div>No podcasts to display</div>
+
       ) : (
         listenedPodcast.map(podcastObj => {
           return (
             <>
+            <div className="podcast changes">
               <img key={podcastObj.id} src={podcastObj.image} alt='' />;
               <figure>
                 <figcaption>{podcastObj.podcastName}:</figcaption>
@@ -48,17 +59,19 @@ const Listened = () => {
               <p>{podcastObj.notes}</p>
               <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
-                onClick={() => deletePodcast(podcastObj.id)}
-              >
+                onClick={() => deletePodcast(podcastObj.id)}>
                 Delete
               </button>{' '}
+              </div>
+              <br  />
+             
               <button
-                onClick={() => setIsUpdate(true)}
-                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
-              >
+                onClick={() => updatePodcast(true)}
+                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'>
                 Update
               </button>
               {isUpdate ? <Update id={podcastObj.id} /> : ''}
+             
             </>
           )
         })

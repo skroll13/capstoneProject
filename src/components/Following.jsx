@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+
 // import { useDispatch } from 'react-redux'
 // import { useNavigate } from 'react-router-dom'
 import Update from './UpdateFollowing'
@@ -35,6 +36,7 @@ const [podcastId, setPodcastId] = useState("")
     setTriggerRefresh(!triggerRefresh)
     console.log(id)
   }
+
 const handleUpdate = (id) => {
   setPodcastId(id)
   console.log(id)
@@ -43,6 +45,7 @@ const handleUpdate = (id) => {
 }
   return (
     <>
+
     
       {!followedPodcast ? (
         <div>No podcasts to display</div>
@@ -64,13 +67,15 @@ const handleUpdate = (id) => {
                 Delete 
               </button>
               {" "}
-              <button
+              {/* <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
+
                 onClick={() => handleUpdate(podcastObj.id)}
               >
                 Update 
               </button>
               {isUpdate ? <Update id={podcastId} /> : ''}
+
             </>
           )
         })
