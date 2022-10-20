@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Update from '../components/Update'
+import Update from '../components/UpdateListened'
 
 const Listened = () => {
   const [listenedPodcast, setListenedPodcast] = useState([])
@@ -15,7 +15,7 @@ const Listened = () => {
         })
         // let result = await response.json()
         setListenedPodcast(response.data)
-        console.log(listenedPodcast)
+        // console.log(listenedPodcast)
       } catch (error) {
         console.log(error)
       }
@@ -24,12 +24,12 @@ const Listened = () => {
     //eslint-disable-next-line
   }, [triggerRefresh])
 
-  console.log(listenedPodcast)
+  // console.log(listenedPodcast)
 
   const deletePodcast = id => {
     axios.delete(`api/v1/listened/${id}`)
     setTriggerRefresh(!triggerRefresh)
-    console.log(id)
+    // console.log(id)
   }
 const updatePodcast = id => {
   axios.put(`api/v1/listened/${id}`)
@@ -56,6 +56,7 @@ const updatePodcast = id => {
                 <figcaption>{podcastObj.podcastName}:</figcaption>
                 <audio controls src={podcastObj.audioLink}></audio>
               </figure>
+              <p>{podcastObj.notes}</p>
               <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
                 onClick={() => deletePodcast(podcastObj.id)}>
