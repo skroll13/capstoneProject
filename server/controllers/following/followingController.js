@@ -77,9 +77,12 @@ const deleteFollowingController = async(req, res, next)=>{
 
 //update
 const updateFollowingController = async(req, res, next)=>{
+    console.log(req.body)
+    const thisIsAVariable = JSON.stringify(req.body)
+    console.log(thisIsAVariable)
     try {
         const { id } = req.params;
-        const following = await Following.findByIdAndUpdate(id, req.body,{
+        const following = await Following.findByIdAndUpdate(id, thisIsAVariable,{
             new: true,
             runValidators: true
         })
