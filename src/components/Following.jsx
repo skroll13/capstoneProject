@@ -9,6 +9,7 @@ const Following = () => {
   const [followedPodcast, setFollowedPodcast] = useState([])
   const [triggerRefresh, setTriggerRefresh] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
+  
 const [podcastId, setPodcastId] = useState("")
   useEffect(() => {
     const followPodcast = async () => {
@@ -67,7 +68,7 @@ const handleUpdate = (id) => {
                 Delete 
               </button>
               {" "}
-              {/* <button
+              <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
 
                 onClick={() => handleUpdate(podcastObj.id)}
