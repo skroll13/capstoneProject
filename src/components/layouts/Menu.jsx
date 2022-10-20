@@ -5,10 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 function Menu() {
   return (
 
-      <Navbar className="background-color: bg-red-600 fixed-top" variant="light" >
+      <Navbar className="background-color: bg-red-600 fixed-top" variant="dark" >
         <Container>
           <Navbar.Brand className="font-mono" href="/">Your Podcasts</Navbar.Brand>
-          <Nav className="font-mono">
+          <Nav className="font-mono text-black bold">
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/searchpodcast">Search</Nav.Link>
@@ -23,3 +23,4 @@ function Menu() {
 }
 
 export default Menu;
+

@@ -7,12 +7,11 @@ const Listened = () => {
   const [triggerRefresh, setTriggerRefresh] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
 
-
   useEffect(() => {
     const heardPodcast = async () => {
       try {
         let response = await axios.get('api/v1/listened', {
-          headers: { authorization: localStorage.token }
+          headers: { authorization: `bearer ${localStorage.token}` }
         })
         // let result = await response.json()
         setListenedPodcast(response.data)
@@ -22,44 +21,43 @@ const Listened = () => {
       }
     }
     heardPodcast()
-  }, [])
+    //eslint-disable-next-line
+  }, [triggerRefresh])
 
   console.log(listenedPodcast)
 
   const deletePodcast = id => {
-    axios.delete(`api/v1/following/${id}`)
+    axios.delete(`api/v1/listened/${id}`)
     setTriggerRefresh(!triggerRefresh)
     console.log(id)
   }
 
   return (
     <>
-  
       {!listenedPodcast ? (
         <div>No podcasts to display</div>
       ) : (
         listenedPodcast.map(podcastObj => {
           return (
             <>
-              <img key={podcastObj.id} src={podcastObj.image} alt='' /> 
+              <img key={podcastObj.id} src={podcastObj.image} alt='' />;
+              <figure>
+                <figcaption>{podcastObj.podcastName}:</figcaption>
+                <audio controls src={podcastObj.audioLink}></audio>
+              </figure>
               <button
-                className='font-mono py-10 mt-16 btn btn-small btn-danger btn-block'
-                onClick={() => deletePodcast(podcastObj.id)} >
-                Delete Podcast
-               </button>
-               <button onClick={() => setIsUpdate(true)}
-               className='font-mono py-20 mt-4 btn btn-lg btn-danger btn-block'
->
-  Update
-</button>
-
-
-               
-              {isUpdate ? <Update id={podcastObj.id} />
-                
-              : (
-                ''
-              )}
+                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
+                onClick={() => deletePodcast(podcastObj.id)}
+              >
+                Delete
+              </button>{' '}
+              <button
+                onClick={() => setIsUpdate(true)}
+                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
+              >
+                Update
+              </button>
+              {isUpdate ? <Update id={podcastObj.id} /> : ''}
             </>
           )
         })

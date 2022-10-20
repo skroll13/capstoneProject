@@ -11,16 +11,19 @@ const Following = () => {
     const followPodcast = async () => {
       try {
         let response = await axios.get('api/v1/following', {
-          headers: { authorization: localStorage.token }
+          headers: { authorization: `bearer ${localStorage.token}` }
         })
         // let result = await response.json()
         setFollowedPodcast(response.data)
         console.log(followedPodcast)
       } catch (error) {
+      
         console.log(error)
+        
       }
     }
     followPodcast()
+    // eslint-disable-next-line
   }, [triggerRefresh])
 
   console.log(followedPodcast)
@@ -30,20 +33,6 @@ const Following = () => {
     setTriggerRefresh(!triggerRefresh)
     console.log(id)
   }
-  // const UpdateNotes = id => {
-  //   axios.update(`api/v1/following/${id}`)
-
-  //   // const dispatch = useDispatch()
-  //   // const navigate = useNavigate()
-
-  //   // const handleSubmit = (e) => {
-  //   //   e.preventDefault()
-
-  //   //   dispatch(UpdateNotes)
-  //   // }
-  //   // setTriggerRefresh(!triggerRefresh)
-  //   console.log(id)
-  // }
 
   return (
     <>
@@ -53,19 +42,23 @@ const Following = () => {
         followedPodcast.map(podcastObj => {
           return (
             <>
-              <br />
               <img key={podcastObj.id} src={podcastObj.image} alt='' />
+              <figure>
+                <figcaption>{podcastObj.podcastName}:</figcaption>
+                <audio controls src={podcastObj.audioLink}></audio>
+              </figure>
               <button
-                className='font-mono py-10 mt-16 btn btn-small btn-danger btn-block'
+                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-lg'
                 onClick={() => deletePodcast(podcastObj.id)}
               >
-                Delete Podcast
-              </button>{' '}
+                Delete 
+              </button>
+              {" "}
               <button
-                className='font-mono py-10 mt-16 btn btn-small btn-danger btn-block'
+                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
                 onClick={() => deletePodcast(podcastObj.id)}
               >
-                Update Notes
+                Update 
               </button>
             </>
           )

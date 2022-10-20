@@ -23,7 +23,8 @@ const SearchPodcast = () => {
       notes: podcastObj.description_original
     }
     axios.post('/api/v1/following/', newPodcast, {
-      headers: { 'authorization': localStorage.token },
+      headers: { 'authorization': `bearer ${localStorage.token}`
+ },
       
     })
     console.log(newPodcast)
@@ -39,7 +40,7 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-    axios.post('/api/v1/listened', newPodcast)
+  axios.post('/api/v1/listened', newPodcast,  {headers: { 'authorization': `bearer ${localStorage.token}`}},)
     console.log(newPodcast)
   }
 
