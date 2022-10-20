@@ -22,6 +22,8 @@ import Following from './components/Following'
 import Listened from './components/Listened'
 import Logout from './components/Logout'
 import Menu from './components/layouts/Menu'
+import RequireAuth from './components/RequireAuth';
+
 
 // const persistConfig = {
 //   key: 'root',
@@ -49,8 +51,8 @@ root.render(
             <Route path='/searchpodcast' element={<SearchPodcast />}></Route>
             <Route path='/logout' element={<Logout />}></Route>
             <Route path='/menu' element={<Menu />} />
-            <Route path='/following' element={<Following />} />
-            <Route path='/listened' element={<Listened />} />
+            <Route path='/following' element={<RequireAuth> <Following /> </RequireAuth>} />
+            <Route path='/listened' element={<RequireAuth> <Listened /> </RequireAuth>} />
           </Routes>
         </BaseLayout>
       </Router>
