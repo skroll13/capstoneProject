@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 
 
 const Update = (props) => {
   const [isUpdate, setIsUpdate] = useState('')
   const id = props.id
-
+  console.log(id)
   
   
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(id)
+    let testObj = {"notes":isUpdate}
+    axios.put(`api/v1/following/${id}`, testObj)
  
     console.log(isUpdate)
 
