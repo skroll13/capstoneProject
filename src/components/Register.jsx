@@ -18,6 +18,7 @@ const Register = () => {
     e.preventDefault()
     dispatch(
       register({ fullname, email, password }, () => {
+        console.log("User was successfully created")
         navigate('/login')
       })
     )

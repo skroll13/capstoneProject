@@ -72,7 +72,7 @@ const SearchPodcast = () => {
       <br />
       <div className='search'>
         <input
-          className='text-green-800'
+          className='text-black-800'
           onChange={e => setSearchInput(e.target.value)}
           type='text'
           placeholder='Podcast or Episode'
