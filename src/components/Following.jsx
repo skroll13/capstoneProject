@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+
 // import { useDispatch } from 'react-redux'
 // import { useNavigate } from 'react-router-dom'
 
@@ -34,8 +35,21 @@ const Following = () => {
     console.log(id)
   }
 
+//   const updatePodcast = id => {
+//   axios.put(`api/v1/following/${id}`)
+//   setTriggerRefresh(!triggerRefresh)
+//   console.log(id)
+// }
+
+
   return (
     <>
+    <br  />
+    <br  />
+    <br  />
+    <br  />
+    <h1>Following</h1>
+    
       {!followedPodcast ? (
         <div>No podcasts to display</div>
       ) : (
@@ -54,12 +68,12 @@ const Following = () => {
                 Delete 
               </button>
               {" "}
-              <button
+              {/* <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
-                onClick={() => deletePodcast(podcastObj.id)}
+                onClick={() => updatePodcast(podcastObj.id)}
               >
                 Update 
-              </button>
+              </button> */}
             </>
           )
         })

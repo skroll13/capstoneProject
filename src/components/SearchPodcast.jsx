@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-// import { useDispatch } from "react-redux"
 import axios from 'axios'
-// import data from '../data'
 
 const { Client } = require('podcast-api')
 
@@ -11,7 +9,7 @@ const SearchPodcast = () => {
 
   // const dispatch = useDispatch() //initializing hook
 
-  //Once I have database info, will send via Axios
+
   const saveToFollowing = podcastObj => {
     let newPodcast = {
       episodeName: podcastObj.podcast.title_original,
@@ -66,6 +64,11 @@ const SearchPodcast = () => {
 
   return (
     <>
+    <br  />
+    <br  />
+    <br  />
+    <br  />
+    <h1>search</h1>
       <br />
       <br />
       <br />

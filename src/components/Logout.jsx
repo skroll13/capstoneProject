@@ -18,16 +18,18 @@ const Logout = () => {
   }
 
   return (
-    <div>
+    <div className = " .bg-danger .bg-lighten-lg">
        <button
-        type="submit"
+        
         className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block"
-        onClick={userLogout}
-        >
-        Logout
+        onClick={(userLogout)}>
+        
       </button>
     </div>
+
+
   )
+ 
 }
 
 export default Logout;
