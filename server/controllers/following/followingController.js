@@ -82,7 +82,7 @@ const updateFollowingController = async(req, res, next)=>{
     console.log(thisIsAVariable)
     try {
         const { id } = req.params;
-        const following = await Following.findByIdAndUpdate(id, thisIsAVariable,{
+        const following = await Following.findByIdAndUpdate(`${id}`, thisIsAVariable,{
             new: true,
             runValidators: true
         })
