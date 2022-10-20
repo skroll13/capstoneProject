@@ -78,7 +78,7 @@ const deleteListenedController = async(req, res, next)=>{
 const updateListenedController = async(req, res, next)=>{
     try {
         const { id } = req.params;
-        const listened = await Listened.findByIdAndUpdate(id, req.body,{
+        const listened = await Listened.findByIdAndUpdate(id, `"notes":${req.body}`,{
             new: true,
             runValidators: true
         })
