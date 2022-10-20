@@ -77,26 +77,24 @@ const deleteFollowingController = async(req, res, next)=>{
 
 //update
 const updateFollowingController = async(req, res, next)=>{
-    console.log(req.body)
-    const thisIsAVariable = JSON.stringify(req.body)
-    console.log(thisIsAVariable)
     try {
         const { id } = req.params;
-        const following = await Following.findByIdAndUpdate(`${id}`, thisIsAVariable,{
+        let id1 = {_id:id}
+        let testObj = req.body
+        let obj = JSON.stringify(testObj);
+        console.log('obj',obj);
+        const following = await Following.findByIdAndUpdate(id1, testObj,{
             new: true,
             runValidators: true
         })
         res.json({
             status:"success",
-            data: following
+            data: listened
         })
     } catch (error) {
         next(new AppErr(error.message, 500))
     }
 }
-
-
-
 
 module.exports = {
     createFollowingController,
