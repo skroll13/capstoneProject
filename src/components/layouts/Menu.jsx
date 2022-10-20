@@ -1,14 +1,14 @@
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-// import { PlusIcon } from '@heroicons/react/20/solid'
+import { PlusIcon } from '@heroicons/react/20/solid'
 
-const Menu = () => {
+export default function Navbar () {
   return (
-    <Disclosure as='nav' className='bg-red-600'>
+    <Disclosure as='nav' className='bg-gray-800'>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-            <div className='flex h-16 justify-between content-center'>
+            <div className='flex h-16 justify-between'>
               <div className='flex'>
                 <div className='-ml-2 mr-2 flex items-center md:hidden'>
                   {/* Mobile menu button */}
@@ -22,70 +22,74 @@ const Menu = () => {
                   </Disclosure.Button>
                 </div>
                 <div className='flex flex-shrink-0 items-center'>
-                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
-                    {' '}
-                    <path d='M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z' />
-                  </svg>
+                  <img
+                    className='block h-8 w-auto lg:hidden'
+                    src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+                    alt='Your Company'
+                  />
+                  <img
+                    className='hidden h-8 w-auto lg:block'
+                    src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+                    alt='Your Company'
+                  />
                 </div>
                 <div className='hidden md:ml-6 md:flex md:items-center md:space-x-4'>
                   <a
-                    href='/'
-                    className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium visited: bg-red-600'
+                    to='/'
+                    className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                   >
-                    YourPodcasts
+                    Home
                   </a>
 
                   <>
                     <a
-                      href='/register'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium active: bg-red-600
-'
+                      href='/add-transaction'
+                      className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                     >
-                      Registration
+                      Add Transaction
                     </a>
                     <a
-                      href='/Login'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium'
+                      href='/dashboard'
+                      className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                     >
-                      Login
+                      Dashboard
                     </a>
                   </>
 
                   <>
                     <a
-                      href='/searchpodcast'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium'
+                      href='/login'
+                      className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                     >
-                      Search
+                      Login
                     </a>
                     <a
-                      href='/following'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium'
+                      href='/register'
+                      className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                     >
-                      Following
+                      Register
                     </a>
-                    <a
-                      href='/listened'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium'
-                    >
-                      Listened
-                    </a>
+                  </>
 
-                    <a
-                      href='/'
-                      className='text-gray-50 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium'
-                    >
+                  <>
+                    <button className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                       Logout
-                    </a>
+                    </button>
                   </>
                 </div>
               </div>
               <div className='flex items-center'>
                 <div className='flex-shrink-0'>
-                  
-                   
-                   
-                 
+                  <a
+                    href='/dashboard'
+                    className='relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'
+                  >
+                    <PlusIcon
+                      className='-ml-1 mr-2 h-5 w-5'
+                      aria-hidden='true'
+                    />
+                    <span>New Transaction</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -134,4 +138,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+

@@ -1,8 +1,4 @@
-// import { authContext } from './context/AuthContext/AuthContext'
-// import Menu from './layouts/Menu'
-// import { Disclosure } from '@headlessui/react'
-// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-// import { PlusIcon } from '@heroicons/react/20/solid'
+
 import React, { useState } from 'react'
 // import { Link } from "react-router-dom";  //this will be used if we link out to the registration page
 import { useDispatch } from 'react-redux'
@@ -35,6 +31,7 @@ const Login = () => {
       alert('Email or password are incorrect')
     }
   }
+
   return (
     <>
       <section className='py-24 md:py-32 bg-white'>
@@ -93,9 +90,8 @@ const Login = () => {
               <p className='text-center'>
                 <span className='font-mono text-xs font-medium'>
                   Don’t have an account?
-                   {/* <a href='#'>Register</a> */}
-                </span>
-                {" "}
+                  {/* <a href='#'>Register</a> */}
+                </span>{' '}
                 <button
                   className='font-mono inline-block text-xs font-medium text-red-500 hover:text-red-600 hover:underline'
                   type='submit'

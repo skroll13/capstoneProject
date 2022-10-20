@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 // import { Link } from "react-router-dom";  //this will be used if we link out to the registration page
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -24,6 +24,7 @@ const Login = () => {
       alert("Email or password are incorrect")
     }
   }
+
 
   return (
     <>
