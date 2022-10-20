@@ -64,6 +64,7 @@ const SearchPodcast = () => {
 
   return (
     <>
+    <div className=".bg-danger ">
     <br  />
     <br  />
     <br  />
@@ -130,6 +131,7 @@ const SearchPodcast = () => {
           )
         })
       )}
+      </div>
     </>
   )
 }
