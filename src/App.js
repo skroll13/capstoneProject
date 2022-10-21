@@ -6,20 +6,19 @@ function App () {
   return (
     <>
 
+     <div className="bg-black h-96 w-full bg-cover bg-center p-24">
     
-    <br  />
-    <br  />
-    <br  />
-    <br  />
-      <main>
-        
-          <img
-            src className='./assets/mohammad-metri-1oKxSKSOowE-unsplash.jpg max-w-fit max-h-full'
-           
-          />
-       
-      </main>
-    </>
+    <img src={pic}></img>
+    <div className='p-24'></div>
+
+    <h1 className="text-white' text-6xl font-bold">Welcome to YourPodcasts</h1>
+
+    <h2 className="text-black text-3xl font-light">Still so much to do</h2>
+    
+
+    </div>
+
+    </div>
   )
 }
 
