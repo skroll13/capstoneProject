@@ -26,11 +26,11 @@ const Register = () => {
 
   return (
     <>
-      <div className='ml-10 mr-10 '>
-        <div className='col-lg-7 py-3 py-md-5'>
-          <h1 className='font-mono text-red-700 mt-10 justify-center'>Register</h1>
+      <div className='justify-center ml-10 mr-10 '>
+        <div className='justify-center col-lg-7 py-3 py-md-5'>
+          <h1 className='justify-center font-mono text-red-700 mt-10 '>Register</h1>
           <br  />
-          <p className='font-mono col-lg-5    '>
+          <p className='justify-center font-mono col-lg-5    '>
             Once registered, you will be able to search for episodes of your
             favorite podcast, save episodes to listen to in the future and keep
             track of episodes you have already heard.
@@ -38,7 +38,7 @@ const Register = () => {
         </div>
        
         {/* <div className='font-mono grid-cols-3'> */}
-        <div className='font-mono col-lg-5 pl-lg-5 pb-23 py-lg-5'>
+        <div className='justify-center font-mono col-lg-5 pl-lg-5 pb-23 py-lg-5'>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               
@@ -47,7 +47,7 @@ const Register = () => {
                 onChange={e => setFullName(e.target.value)}
                 id='fullName-register'
                 name='fullName'
-                className='form-control'
+                className='justify-center form-control'
                 type='text'
                 placeholder='Enter your Name'
                 autoComplete='off'
@@ -82,7 +82,7 @@ const Register = () => {
             </div>
             <button
               type='submit'
-              className='font-mono py-20 mt-4 btn btn-lg btn-danger btn-block'
+              className='font-mono py-20 mt-4 btn btn-md btn-danger btn-block'
             >
               Submit
             </button>

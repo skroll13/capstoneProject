@@ -62,12 +62,14 @@ const SearchPodcast = () => {
   return (
     <>
    
-    <div className='background-color: bg-red-400' variant='light' m-10>
+    <div>
+
         
           {/* Search Input goes here */}
-          <input className='text-black-800'onChange={e => setSearchInput(e.target.value)} type='text' placeholder='Podcast or Episode' />
+          <input className=' mt-20 mr-30 text-white'onChange={e => setSearchInput(e.target.value)} type='text' placeholder='Podcast or Episode' />
+          {'  '}{'  '}
           <button
-           className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700' onClick={handleInput} type='submit'>
+           className='grid-cols-2 justify-self-center mr-30 rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700' onClick={handleInput} type='submit'>
             Search
           </button>
 
@@ -75,21 +77,26 @@ const SearchPodcast = () => {
         {!searchResults ? (
           <div></div>
         ) : (
-          
           searchResults.map(podcastObj => {
           {/* If data is returned, then the data is rendered one at a time  */}
             return (
               <>
+              <div class="grid grid-cols-2 gap-4">
                 {/* Mapping() through the array of objects (podcast data returned) */}
-                <img src={podcastObj.image} alt='' />
+                <img className="md-10 mr-20" src={podcastObj.image} alt='' />
+                <br  />
+                <br  />
+              </div>
 
                 <div class='btn-group mr-2' role='group' aria-label='Basic example'>
-
+              <br  />
+              <br  />
+              <br  />
                   {/* Button to 'save to following' */}
                    <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToFollowing(podcastObj)}>
                      Save to Following
                    </button>
-
+                    {" "}
                   {/* Button to 'save to Listened' */}
                   <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToListened(podcastObj)}>
                      Save to Listened
