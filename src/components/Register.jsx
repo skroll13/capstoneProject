@@ -23,21 +23,22 @@ const Register = () => {
 
   return (
     <>
+    <container>
       <div className='justify-center ml-10 mr-10 '>
         <div className='justify-center col-lg-7 py-3 py-md-5'>
-          <h1 className='justify-center font-mono text-red-700 mt-10 '>
+          <h1 className='text-center font-mono text-red-700 mt-10 text-bold'>
             Register
           </h1>
           <br />
-          <p className='justify-center font-mono col-lg-5    '>
+          <p className='container mx-auto whitespace-normal font-mono flex-auto center-alig mr-20'>
             Once registered, you will be able to search for episodes of your
             favorite podcast, save episodes to listen to in the future and keep
-            track of episodes you have already heard.
+            track of episodes you have already heard.  Lastly, you are able to hear the podcast right within the app.
           </p>
         </div>
 
-        {/* <div className='font-mono grid-cols-3'> */}
-        <div className='justify-center font-mono col-lg-5 pl-lg-5 pb-23 py-lg-5'>
+        
+        <div className='static font-mono '>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <input
@@ -83,6 +84,7 @@ const Register = () => {
           </form>
         </div>
       </div>
+      </container>
     </>
   )
 }
