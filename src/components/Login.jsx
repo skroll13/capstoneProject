@@ -23,14 +23,20 @@ const Login = () => {
       )
     } catch (error) {
       console.log("e.response.data")
-      alert("Email or password are incorrect")
+     
     }
   }
 
-
   return (
     <>
-      <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+    <section className="py-24 md:py-32 bg-white"></section>
+        <div className="container px-4 mx-auto"></div>
+          <div className="max-w-sm mx-auto"></div>
+            <div className="mb-6 text-center"></div>
+              < className="mb-4 text-2xl md:text-3xl font-bold">
+                Sign in to your account
+              </>
+      {/* <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8'>
           <div>
             <h2 className='mt-6 text-center text-2xl font-mono tracking-tight text-gray-900'>
@@ -86,9 +92,8 @@ const Login = () => {
             </div>
           </form>
         </div>
-      </div>
-    </>
-  )
-}
+      </div> */}
+
+</div>
 
 export default Login

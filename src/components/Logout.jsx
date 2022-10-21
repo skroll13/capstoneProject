@@ -2,8 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../actions/actions'
-import images from '../components/images/pexels-anna-tarazevich-wide.jpg'
-
+import pic2 from './images/pic2.jpg'
 
 const Logout = () => {
   const navigate = useNavigate()
@@ -16,33 +15,18 @@ const Logout = () => {
         navigate('/login')
       })
     )
-  }
-
-const image = () => {
-  return(
-    <div style={{backgroundImage: `url(${'images/pexels-anna-tarazevich-wide.jpg'})`}}>Please show up</div>
-  )
-
-
   
-
-
-}
-
-  return <>
-
-
-<h1>Logout</h1>
-
-
-
-
-
-    <button
-      className='my-8 font-mono py-3 mt-4 btn btn-lg btn-danger btn-block'
-      onClick={userLogout}>
-      </button>
-  </>
-}
-
+  return (
+    <>
+      <div className='z-30'>
+        <img
+          className='image-fluid justify-content-center'
+          src={pic2}
+          value='anna_tarazevich'
+          alt='Listen to a podcastn'
+        />
+      </div>
+    </>
+  )
+} }  
 export default Logout

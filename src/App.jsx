@@ -1,10 +1,9 @@
 import './App.css'
 import React from 'react'
-
 import pic1 from './components/images/pic1.jpg'
 
 
-function App () {
+function App ()  {
   return (
     <>
       <div className='background-color: bg-red-600' variant='light'>
