@@ -60,7 +60,7 @@ const handleUpdate = (id) => {
             <>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />
               <figure>
-                <figcaption>{podcastObj.podcastName}:</figcaption>
+                <figcaption>{podcastObj.podcastName}</figcaption>
                 <audio controls src={podcastObj.audioLink}></audio>
               </figure>
              
@@ -72,12 +72,12 @@ const handleUpdate = (id) => {
               </button>
               {" "}
               
-              <button className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
+              {/* <button className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
                 onClick={() => handleUpdate(podcastObj.id)}>
                 Update 
-              </button>
-              console.log(onClick)
-              <p>{podcastObj.notes}</p>
+              </button> */}
+              
+              {/* <p>{podcastObj.notes}</p> */}
 
              
             </>
