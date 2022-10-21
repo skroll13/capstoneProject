@@ -14,33 +14,30 @@ const Logout = () => {
       logout(() => {
         navigate('/login')
       })
-    )
+    )}
   
   return (
-
     <>
-      <div className='z-30'>
-        <img
-          className='image-fluid justify-content-center'
-          src={pic2}
-          value='anna_tarazevich'
-          alt='Listen to a podcastn'
-        />
-      </div>
-
-
-
-
-       <button
-        className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block text-black"
+      <div className='align-center'>
+      <button
+        className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block text-black "
         onClick={(userLogout)}
         >
         Logout Here
       </button>
- 
+      </div>
+      {/* <div className='z-30'>
+        <img
+          className='image-fluid justify-content-center'
+          src={pic2}
+          value='anna_tarazevich'
+          alt='Listen to a podcast'
+        />
 
+      </div> */}
+      
     </>
 
   )
-} }  
+}  
 export default Logout

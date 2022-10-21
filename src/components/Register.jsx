@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../actions/actions'
+
+
 
 const Register = () => {
   const [fullname, setFullName] = useState()
@@ -23,7 +26,9 @@ const Register = () => {
 
   return (
     <>
+
     <container>
+
       <div className='justify-center ml-10 mr-10 '>
         <div className='justify-center col-lg-7 py-3 py-md-5'>
           <h1 className='text-center font-mono text-red-700 mt-10 text-bold'>
@@ -36,6 +41,7 @@ const Register = () => {
             track of episodes you have already heard.  Lastly, you are able to hear the podcast right within the app.
           </p>
         </div>
+
 
         
         <div className='static font-mono '>
@@ -66,6 +72,8 @@ const Register = () => {
             </div>
             <br />
             <div className='form-group'>
+       
+       
               <input
                 onChange={e => setPassword(e.target.value)}
                 id='password-register'
@@ -84,7 +92,10 @@ const Register = () => {
           </form>
         </div>
       </div>
+
       </container>
+
+
     </>
   )
 }
