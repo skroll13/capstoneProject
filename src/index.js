@@ -1,4 +1,3 @@
-
 import ReactDOM from 'react-dom/client';
 import { createStore, compose, applyMiddleware } from 'redux'
 import reducer from './reducers/reducer'
