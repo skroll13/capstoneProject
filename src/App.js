@@ -1,20 +1,21 @@
 import './App.css'
 import React from 'react'
-import pic from './images/mohammad-metri-1oKxSKSOowE-unsplash.jpg'
+import brickwall from './images/brickwall.jpg'
 
 function App () {
   return (
-    <div>
-      <>
-        <img src='./images/mohammad-metri-1oKxSKSOowE-unsplash.jpg' className='w-full h-full object-cover overlay' />
-        <div className='p-24'>
-          <h1 className='text-green-400 text-6xl font-bold'>Welcome to YourPodcasts!</h1>
-        </div>
-     
+    <>
+      <div className='background-color: bg-red-400' variant='light'>
+        <img
+          className='image-fluid justify-content-center'
+          src="brickwall.jpg"
+          value='mohammad-metri-1oKxSKSOowE-unsplash'
+          alt='neon sign'
+        />
+      </div>
     </>
-    </div>
   )
-}  
-   
+}
 
 export default App
+

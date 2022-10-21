@@ -40,10 +40,8 @@ const SearchPodcast = () => {
     })
     console.log(newPodcast)
   }
-
   const handleInput = () => {
     const client = Client({ apiKey: '5631722333164e85ba9baaa0c517ca49' })
-
     client
       .search({
         q: searchInput,
@@ -63,80 +61,47 @@ const SearchPodcast = () => {
 
   return (
     <>
-      <div className='m-96'>
-        <br />
-        <br />
-        <br />
-        <br />
-        <h1>search</h1>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className='search'>
-          <input
-            className='text-black-800'
-            onChange={e => setSearchInput(e.target.value)}
-            type='text'
-            placeholder='Podcast or Episode'
-          />
-          {''}
-          <br />
-          <br />
+   
+    <div className='background-color: bg-red-400' variant='light' m-10>
+        
+          {/* Search Input goes here */}
+          <input className='text-black-800'onChange={e => setSearchInput(e.target.value)} type='text' placeholder='Podcast or Episode' />
           <button
-            className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
-            onClick={handleInput}
-            type='submit'
-          >
+           className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700' onClick={handleInput} type='submit'>
             Search
           </button>
-        </div>
 
+        {/* Search results are returned, if no data is returned an empty div is created */}
         {!searchResults ? (
           <div></div>
         ) : (
+          
           searchResults.map(podcastObj => {
+          {/* If data is returned, then the data is rendered one at a time  */}
             return (
               <>
-                <container>
-                  <div
-                    class='btn-group mr-2'
-                    role='group'
-                    aria-label='Basic example'
-                  >
-                    <img src={podcastObj.image} alt='' />{' '}
-                    <div className='button'>
-                      {' '}
-                      <button
-                        type='button'
-                        class='btn btn-outline-danger btn-small'
-                      >
-                        <button onClick={() => saveToFollowing(podcastObj)}>
-                          Save to Following
-                        </button>
-                      </button>
-                      <br />{' '}
-                    </div>
-                    <div className='buton'>
-                      {' '}
-                      <button
-                        type='button'
-                        class='btn btn-outline-danger btn-small'
-                      >
-                        <button onClick={() => saveToListened(podcastObj)}>
-                          Save to Listened
-                        </button>
-                      </button>
-                    </div>
+                {/* Mapping() through the array of objects (podcast data returned) */}
+                <img src={podcastObj.image} alt='' />
+
+                <div class='btn-group mr-2' role='group' aria-label='Basic example'>
+
+                  {/* Button to 'save to following' */}
+                   <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToFollowing(podcastObj)}>
+                     Save to Following
+                   </button>
+
+                  {/* Button to 'save to Listened' */}
+                  <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToListened(podcastObj)}>
+                     Save to Listened
+                  </button>
                   </div>
-                </container>
-              </>
+             </>     
             )
-          })
-        )}
-      </div>
-    </>
+          }) 
+          )
+        }
+    </div> 
+  </> 
   )
 }
-
 export default SearchPodcast
