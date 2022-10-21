@@ -19,12 +19,16 @@ function Menu () {
   
   
   return (
+
     <Navbar className='background-color: bg-red-600  text-white' variant='light'>
+
       <Container>
-        <Navbar.Brand className='font-mono' href='/'>
+        <Navbar.Brand className='font-serif' href='/'>
           Your Podcasts
         </Navbar.Brand>
+
         <Nav className='justify-center font-mono antialiased text-green-800 background-color: bg-red-600 text-2xl'>
+
           <div className="text-bold place-self-start">
           {/* <Nav.Link className='text-bold place-self-start' href='/'>YourPodcasts | </Nav.Link> */}
           {/* {loggedin}{loggedout} */}

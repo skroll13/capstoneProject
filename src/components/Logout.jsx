@@ -33,9 +33,11 @@ const Logout = () => {
           value='anna_tarazevich'
           alt='Listen to a podcast'
         />
+
       </div> */}
       
     </>
+
   )
 }  
 export default Logout

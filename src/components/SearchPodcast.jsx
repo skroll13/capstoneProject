@@ -9,6 +9,7 @@ const SearchPodcast = () => {
 
   // const dispatch = useDispatch() //initializing hook
 
+
   const saveToFollowing = podcastObj => {
     let newPodcast = {
       episodeName: podcastObj.podcast.title_original,
@@ -20,7 +21,9 @@ const SearchPodcast = () => {
       notes: podcastObj.description_original
     }
     axios.post('/api/v1/following/', newPodcast, {
-      headers: { authorization: `bearer ${localStorage.token}` }
+      headers: { 'authorization': `bearer ${localStorage.token}`
+ },
+      
     })
     console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
@@ -35,13 +38,13 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-    axios.post('/api/v1/listened', newPodcast, {
-      headers: { authorization: `bearer ${localStorage.token}` }
-    })
+  axios.post('/api/v1/listened', newPodcast,  {headers: { 'authorization': `bearer ${localStorage.token}`}},)
     console.log(newPodcast)
   }
+
   const handleInput = () => {
     const client = Client({ apiKey: '5631722333164e85ba9baaa0c517ca49' })
+
     client
       .search({
         q: searchInput,
@@ -60,55 +63,55 @@ const SearchPodcast = () => {
   }
 
   return (
+    
     <>
-   
-    <div>
-
-        
-          {/* Search Input goes here */}
-          <input className=' mt-20 mr-30 text-white'onChange={e => setSearchInput(e.target.value)} type='text' placeholder='Podcast or Episode' />
-          {'  '}{'  '}
+    <div className=" mx-auto relative">
+      <div className='mt-20 grid grid-cols-1'>
+        <div className="place-self-center">
+          <input
+            className='text-slate-400 italic w-80 text-center font-mono rounded'
+            onChange={e => setSearchInput(e.target.value)}
+            type='text'
+            placeholder='Search for a Podcast Episode' />
+        </div>
+        {""}
+        <div className="place-self-center p-0">
           <button
-           className='grid-cols-2 justify-self-center mr-30 rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700' onClick={handleInput} type='submit'>
+            className='m-5 mb-10 rounded border font-serif border-red-600 bg-red-500 py-2 px-5 font-bold text-white hover:bg-red-600'
+            onClick={handleInput}
+            type='submit'>
             Search
           </button>
-
-        {/* Search results are returned, if no data is returned an empty div is created */}
+        </div>
+      </div>
+    </div>
+  
         {!searchResults ? (
           <div></div>
         ) : (
           searchResults.map(podcastObj => {
-          {/* If data is returned, then the data is rendered one at a time  */}
             return (
               <>
-              <div class="grid grid-cols-2 gap-4">
-                {/* Mapping() through the array of objects (podcast data returned) */}
-                <img className="md-10 mr-20" src={podcastObj.image} alt='' />
-                <br  />
-                <br  />
-              </div>
-
-                <div class='btn-group mr-2' role='group' aria-label='Basic example'>
-              <br  />
-              <br  />
-              <br  />
-                  {/* Button to 'save to following' */}
-                   <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToFollowing(podcastObj)}>
-                     Save to Following
-                   </button>
-                    {" "}
-                  {/* Button to 'save to Listened' */}
-                  <button type='button' className='btn btn-outline-danger btn-small' onClick={() => saveToListened(podcastObj)}>
-                     Save to Listened
-                  </button>
-                  </div>
-             </>     
+                    <img className="border grid-cols-2 gap2" src={podcastObj.image} alt='' />
+                   
+                      <button type='button' className="rounded border font-mono border-red-600 bg-red-500 py-2 px-5 font-bold text-white hover:bg-red-600 btn-small">
+                        <button onClick={() => saveToFollowing(podcastObj)}>
+                          Save to Following
+                        </button>
+                      </button>
+                     
+                    
+                    <div className="button">
+                      
+                      <button type='button' className='rounded border font-mono border-red-600 bg-red-500 font-bold text-white hover:bg-red-600 btn-small"'>
+                        <button onClick={() => saveToListened(podcastObj)}>
+                          Save to Listened
+                        </button>
+                      </button>
+                    </div>
+              </>
             )
-          }) 
-          )
-        }
-    </div> 
-  </> 
-  )
-}
+        
+
+          }))}</>)}
 export default SearchPodcast
