@@ -46,8 +46,7 @@ const handleUpdate = (id) => {
 }
   return (
     <>
-
-    
+    <div className='m-20'>
       {!followedPodcast ? (
         <div>No podcasts to display</div>
       ) : 
@@ -60,28 +59,29 @@ const handleUpdate = (id) => {
                 <figcaption>{podcastObj.podcastName}:</figcaption>
                 <audio controls src={podcastObj.audioLink}></audio>
               </figure>
-              <p>{podcastObj.notes}</p>
+             
+             
               <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-lg'
-                onClick={() => deletePodcast(podcastObj.id)}
-              >
+                onClick={() => deletePodcast(podcastObj.id)} >
                 Delete 
               </button>
               {" "}
-              <button
-                className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
-
-                onClick={() => handleUpdate(podcastObj.id)}
-              >
+              
+              <button className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
+                onClick={() => handleUpdate(podcastObj.id)}>
                 Update 
               </button>
+              console.log(onClick)
+              <p>{podcastObj.notes}</p>
+
               {isUpdate ? <Update id={podcastId} /> : ''}
 
             </>
           )
         })
         )}
-        
+        </div>
     </>
   )
 }

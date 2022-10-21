@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../actions/actions'
 
-
-
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,11 +20,10 @@ const Login = () => {
         })
       )
     } catch (error) {
-      console.log("e.response.data")
-      alert("Email or password are incorrect")
+      console.log('e.response.data')
+      alert('Email or password are incorrect')
     }
   }
-
 
   return (
     <>
@@ -92,3 +89,4 @@ const Login = () => {
 }
 
 export default Login
+
