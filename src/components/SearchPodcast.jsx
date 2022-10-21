@@ -9,7 +9,6 @@ const SearchPodcast = () => {
 
   // const dispatch = useDispatch() //initializing hook
 
-
   const saveToFollowing = podcastObj => {
     let newPodcast = {
       episodeName: podcastObj.podcast.title_original,
@@ -21,9 +20,7 @@ const SearchPodcast = () => {
       notes: podcastObj.description_original
     }
     axios.post('/api/v1/following/', newPodcast, {
-      headers: { 'authorization': `bearer ${localStorage.token}`
- },
-      
+      headers: { authorization: `bearer ${localStorage.token}` }
     })
     console.log(newPodcast)
     // dispatch(addToFollowing(podcastObj)) //lowercase -> action   CAP -> type
@@ -38,7 +35,9 @@ const SearchPodcast = () => {
       listenedTo: false,
       notes: podcastObj.description_original
     }
-  axios.post('/api/v1/listened', newPodcast,  {headers: { 'authorization': `bearer ${localStorage.token}`}},)
+    axios.post('/api/v1/listened', newPodcast, {
+      headers: { authorization: `bearer ${localStorage.token}` }
+    })
     console.log(newPodcast)
   }
 
@@ -64,73 +63,77 @@ const SearchPodcast = () => {
 
   return (
     <>
-    <div className=".bg-danger ">
-    <br  />
-    <br  />
-    <br  />
-    <br  />
-    <h1>search</h1>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className='search'>
-        <input
-          className='text-black-800'
-          onChange={e => setSearchInput(e.target.value)}
-          type='text'
-          placeholder='Podcast or Episode'
-        />
-  {""}
+      <div className='m-96'>
         <br />
         <br />
-        <button
-          className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
-          onClick={handleInput}
-          type='submit'
-        >
-          Search
-        </button>
-      </div>
+        <br />
+        <br />
+        <h1>search</h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className='search'>
+          <input
+            className='text-black-800'
+            onChange={e => setSearchInput(e.target.value)}
+            type='text'
+            placeholder='Podcast or Episode'
+          />
+          {''}
+          <br />
+          <br />
+          <button
+            className='rounded border border-red-700 bg-red-500 py-1 px-3 font-bold text-white hover:bg-red-700'
+            onClick={handleInput}
+            type='submit'
+          >
+            Search
+          </button>
+        </div>
 
-      {!searchResults ? (
-        <div></div>
-      ) : (
-        searchResults.map(podcastObj => {
-          return (
-            <>
-              <container>
-              <div class="btn-group mr-2" role="group" aria-label="Basic example">
-                              <img src={podcastObj.image} alt='' />{' '}
-
-                              <div className="button">
-                              {" "}
-                                <button type='button' class='btn btn-outline-danger btn-small'>
-                                      <button onClick={() => saveToFollowing(podcastObj)}>
-                                        Save to Following
-                                      </button> 
-                                </button>
-                                <br  />
-                                {" "}
-                              </div>
-
-
-                              <div className="buton">
-                             {" "}
-                                <button type='button' class='btn btn-outline-danger btn-small'>
-                                <button onClick={() => saveToListened(podcastObj)}>
-                                  Save to Listened
-                                </button>
-                                </button>
-                              </div>
-                             
-                              
-                </div>
-              </container>
-            </>
-          )
-        })
-      )}
+        {!searchResults ? (
+          <div></div>
+        ) : (
+          searchResults.map(podcastObj => {
+            return (
+              <>
+                <container>
+                  <div
+                    class='btn-group mr-2'
+                    role='group'
+                    aria-label='Basic example'
+                  >
+                    <img src={podcastObj.image} alt='' />{' '}
+                    <div className='button'>
+                      {' '}
+                      <button
+                        type='button'
+                        class='btn btn-outline-danger btn-small'
+                      >
+                        <button onClick={() => saveToFollowing(podcastObj)}>
+                          Save to Following
+                        </button>
+                      </button>
+                      <br />{' '}
+                    </div>
+                    <div className='buton'>
+                      {' '}
+                      <button
+                        type='button'
+                        class='btn btn-outline-danger btn-small'
+                      >
+                        <button onClick={() => saveToListened(podcastObj)}>
+                          Save to Listened
+                        </button>
+                      </button>
+                    </div>
+                  </div>
+                </container>
+              </>
+            )
+          })
+        )}
       </div>
     </>
   )

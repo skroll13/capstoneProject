@@ -2,34 +2,30 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../actions/actions'
-
-
+import images from '../images/pexels-anna-tarazevich-wide.jpg'
 
 const Logout = () => {
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const userLogout = () => {
     //dispatch our action to signout
-    dispatch(logout(()=>{
-      navigate('/login')
-    }))
+    dispatch(
+      logout(() => {
+        navigate('/login')
+      })
+    )
   }
 
-  return (
-    <div className = " .bg-danger .bg-lighten-lg">
-       <button
-        
-        className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block"
-        onClick={(userLogout)}>
-        
+  return <>
+
+  <div style={{backgroundImage: `url(${images/pexels-anna-tarazevich-wide.jpg})`,backgroundRepeat:"no-repeat"}} />
+    <button
+      className='font-mono py-3 mt-4 btn btn-lg btn-danger btn-block'
+      onClick={userLogout}>
+
       </button>
-    </div>
-
-
-  )
- 
+  </>;
 }
 
-export default Logout;
+export default Logout
