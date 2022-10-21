@@ -27,7 +27,7 @@ const Logout = () => {
           alt='Listen to a podcastn'
         />
       </div>
-    </>
+
 
 
 
@@ -37,9 +37,9 @@ const Logout = () => {
         >
         Logout Here
       </button>
-    </div>
+ 
 
-
+    </>
 
   )
 } }  

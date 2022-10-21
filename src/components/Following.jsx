@@ -46,6 +46,10 @@ const handleUpdate = (id) => {
 }
   return (
     <>
+    {
+  isUpdate ? <Update id={podcastId} /> : ''
+}
+
     <div className='m-20'>
       {!followedPodcast ? (
         <div>No podcasts to display</div>
@@ -75,8 +79,7 @@ const handleUpdate = (id) => {
               console.log(onClick)
               <p>{podcastObj.notes}</p>
 
-              {isUpdate ? <Update id={podcastId} /> : ''}
-
+             
             </>
           )
         })
