@@ -17,6 +17,7 @@ const Logout = () => {
     )
   
   return (
+
     <>
       <div className='z-30'>
         <img
@@ -27,6 +28,19 @@ const Logout = () => {
         />
       </div>
     </>
+
+
+
+       <button
+        className="font-mono py-3 mt-4 btn btn-lg btn-danger btn-block text-black"
+        onClick={(userLogout)}
+        >
+        Logout Here
+      </button>
+    </div>
+
+
+
   )
 } }  
 export default Logout
