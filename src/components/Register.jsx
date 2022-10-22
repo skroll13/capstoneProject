@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../actions/actions'
+import Container from 'react-bootstrap/esm/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -27,73 +30,41 @@ const Register = () => {
   return (
     <>
 
-    <container>
+    <Container className='mainFont'>
 
-      <div className='justify-center ml-10 mr-10 '>
-        <div className='justify-center col-lg-7 py-3 py-md-5'>
-          <h1 className='text-center font-mono text-red-700 mt-10 text-bold'>
-            Register
+      
+          <h1>
+            Create an Account
           </h1>
           <br />
-          <p className='container mx-auto whitespace-normal font-mono flex-auto center-alig mr-20'>
+          <p>
             Once registered, you will be able to search for episodes of your
             favorite podcast, save episodes to listen to in the future and keep
             track of episodes you have already heard.  Lastly, you are able to hear the podcast right within the app.
           </p>
-        </div>
-
-
-        
-        <div className='static font-mono '>
-          <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <input
-                onChange={e => setFullName(e.target.value)}
-                id='fullName-register'
-                name='fullName'
-                className='justify-center form-control'
-                type='text'
-                placeholder='Enter your Name'
-                autoComplete='off'
-              />
-            </div>
-            <br />
-            <div className='form-group'>
-              {''}
-              <input
-                onChange={e => setEmail(e.target.value)}
-                id='email-register'
-                name='email'
-                className='form-control'
-                type='text'
-                placeholder='Enter your email '
-                autoComplete='off'
-              />
-            </div>
-            <br />
-            <div className='form-group'>
-       
-       
-              <input
-                onChange={e => setPassword(e.target.value)}
-                id='password-register'
-                name='password'
-                className='form-control'
-                type='password'
-                placeholder='Create a password'
-              />
-            </div>
-            <button
-              type='submit'
-              className='font-mono py-20 mt-4 btn btn-md btn-danger btn-block'
-            >
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control type="text" placeholder="enter your name" onChange={e => setFullName(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+            </Form.Group>
+            <Button variant="danger" type="submit">
               Submit
-            </button>
-          </form>
-        </div>
-      </div>
+            </Button>
+          </Form>
+          <br />
+          <p>
+            After registering, you'll be taken to the login page to use those fancy new credentials.
+          </p>
 
-      </container>
+    </Container>
 
 
     </>

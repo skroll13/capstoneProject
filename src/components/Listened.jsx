@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Update from '../components/UpdateListened'
+import Container from 'react-bootstrap/esm/Container'
 
 const Listened = () => {
   const [listenedPodcast, setListenedPodcast] = useState([])
@@ -40,11 +41,8 @@ const Listened = () => {
   }
 
   return (
-    <>
-    <br  />
-    <br  />
-    <br  />
-    <h1>Listened</h1>
+    <Container className='mainFont'>
+    <h1>Podcasts You've Listened To</h1>
       {!listenedPodcast ? (
         <div>No podcasts to display</div>
 
@@ -53,12 +51,13 @@ const Listened = () => {
           return (
             <>
             <div className="podcast changes">
-              <img key={podcastObj.id} src={podcastObj.image} alt='' />;
+            <figcaption>{podcastObj.podcastName}</figcaption>
+              <img key={podcastObj.id} src={podcastObj.image} alt='' />
               <figure>
-                <figcaption>{podcastObj.podcastName}:</figcaption>
+                
                 <audio controls src={podcastObj.audioLink}></audio>
               </figure>
-              <p>{podcastObj.notes}</p>
+              {/* <p>{podcastObj.notes}</p> */}
               <button
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'
                 onClick={() => deletePodcast(podcastObj.id)}>
@@ -67,18 +66,18 @@ const Listened = () => {
               </div>
               <br  />
              
-              <button
+              {/* <button
                 onClick={() => updatePodcast(podcastObj.id)}
                 className='font-mono px-4 py-2 text-sm text-white duration-150 bg-red-600 rounded-md hover:bg-red-700 active:shadow-l'>
                 Update
-              </button>
+              </button> */}
               {isUpdate ? <Update id={podcastObj.id} /> : ''}
              
             </>
           )
         })
       )}
-    </>
+    </Container>
   )
 }
 
