@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/esm/Container';
+import FormGroup from 'react-bootstrap/esm/FormGroup';
 
 const { Client } = require('podcast-api')
 
@@ -63,23 +67,27 @@ const SearchPodcast = () => {
   }
 
   return (
-    
-    <>
-    <div className=" mx-auto relative">
-      <div className='mt-20 grid grid-cols-1'>
-        <div className="place-self-center">
+    <Container className='mainFont'>
+     <h1>Search for Podcasts</h1>
+     <p>
+      When you've found something you'd like to listen to, or follow, sign up to become a user and log in. Once logged in, you will be able to search for episodes of your favorite podcast, save episodes to listen to in the future and keep track of episodes you have already heard.  Lastly, you are able to hear the podcast right within the app.
+     </p>
+    <div className='mb-3'>
+      <div>
+        <div>
           <input
-            className='text-slate-400 italic w-80 text-center font-mono rounded'
             onChange={e => setSearchInput(e.target.value)}
             type='text'
-            placeholder='Search for a Podcast Episode' />
+            placeholder='Search for a Podcast Episode' 
+          />
         </div>
-        {""}
-        <div className="place-self-center p-0">
+        
+        <div>
           <button
-            className='m-5 mb-10 rounded border font-serif border-red-600 bg-red-500 py-2 px-5 font-bold text-white hover:bg-red-600'
             onClick={handleInput}
-            type='submit'>
+            type='submit'
+            className='btn btn-danger'
+          >
             Search
           </button>
         </div>
@@ -88,30 +96,34 @@ const SearchPodcast = () => {
   
         {!searchResults ? (
           <div></div>
-        ) : (
-          searchResults.map(podcastObj => {
-            return (
-              <>
-                    <img className="border grid-cols-2 gap2" src={podcastObj.image} alt='' />
-                   
-                      <button type='button' className="rounded border font-mono border-red-600 bg-red-500 py-2 px-5 font-bold text-white hover:bg-red-600 btn-small">
-                        <button onClick={() => saveToFollowing(podcastObj)}>
-                          Save to Following
-                        </button>
-                      </button>
-                     
+          ) : (
+            searchResults.map(podcastObj => {
+              return (
+                <>
+                      <img className="border grid-cols-2 gap2" src={podcastObj.image} alt='' />
                     
-                    <div className="button">
-                      
-                      <button type='button' className='rounded border font-mono border-red-600 bg-red-500 font-bold text-white hover:bg-red-600 btn-small"'>
-                        <button onClick={() => saveToListened(podcastObj)}>
-                          Save to Listened
+                        <button type='button' className='btn btn-danger'>
+                          <button onClick={() => saveToFollowing(podcastObj)}>
+                           Follow
+                          </button>
                         </button>
-                      </button>
-                    </div>
-              </>
-            )
-        
+                      
+                      
+                      <div className="button">
+                        
+                        <button type='button' className='btn btn-danger'>
+                          <button onClick={() => saveToListened(podcastObj)}>
+                            Save to Listened To
+                          </button>
+                        </button>
+                      </div>
+                </>
+              )
+          
 
-          }))}</>)}
+            }))}
+          </Container>
+  )
+        
+}
 export default SearchPodcast

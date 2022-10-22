@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../actions/actions'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/esm/Container';
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -26,65 +29,31 @@ const Login = () => {
   }
 
   return (
-    <>
-      <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='w-full max-w-md space-y-8'>
-          <div>
-            <h2 className='mt-6 text-center text-2xl font-mono tracking-tight text-gray-900'>
-              Log into your account
-            </h2>
-          </div>
-          <form onSubmit={handleSubmit} className='mt-8 space-y-6'>
-            <input type='hidden' name='remember' defaultValue='true' />
-            <div className='-space-y-px rounded-md shadow-sm'>
-              <div>
-                <label htmlFor='email-address' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  id='email-address'
-                  name='email'
-                  type='email'
-                  autoComplete='email'
-                  required
-                  className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm'
-                  placeholder='Email address'
-                  onChange={e => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor='password' className='sr-only'>
-                  Password
-                </label>
-                <input
-                  id='password'
-                  name='password'
-                  type='password'
-                  autoComplete='current-password'
-                  required
-                  className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm'
-                  placeholder='Password'
-                  onChange={e => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center'></div>
-            </div>
-
-            <div>
-              <button
-                type='submit'
-                className='group relative flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-md   font-xlarge text-bold-black hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2'
-              >
-                Log In
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
+          <Container  className='mainFont'>
+          
+           <h1>Login</h1>
+           <br />
+           <p>
+            Once logged in, you will be able to search for episodes of your
+            favorite podcast, save episodes to listen to in the future and keep
+            track of episodes you have already heard.  Lastly, you are able to hear the podcast right within the app.
+          </p>
+          <Form onSubmit={handleSubmit}>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+            </Form.Group>
+            <Button variant="danger" type="submit">
+              Submit
+            </Button>
+          </Form>
+          
+          </Container>
   )
 }
 

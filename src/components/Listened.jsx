@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Update from '../components/UpdateListened'
+import Container from 'react-bootstrap/esm/Container'
 
 const Listened = () => {
   const [listenedPodcast, setListenedPodcast] = useState([])
@@ -40,11 +41,8 @@ const Listened = () => {
   }
 
   return (
-    <>
-    <br  />
-    <br  />
-    <br  />
-    <h1>Listened</h1>
+    <Container className='mainFont'>
+    <h1>Podcasts You've Listened To</h1>
       {!listenedPodcast ? (
         <div>No podcasts to display</div>
 
@@ -53,9 +51,10 @@ const Listened = () => {
           return (
             <>
             <div className="podcast changes">
+            <figcaption>{podcastObj.podcastName}</figcaption>
               <img key={podcastObj.id} src={podcastObj.image} alt='' />
               <figure>
-                <figcaption>{podcastObj.podcastName}</figcaption>
+                
                 <audio controls src={podcastObj.audioLink}></audio>
               </figure>
               {/* <p>{podcastObj.notes}</p> */}
@@ -78,7 +77,7 @@ const Listened = () => {
           )
         })
       )}
-    </>
+    </Container>
   )
 }
 
