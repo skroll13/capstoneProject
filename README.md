@@ -12,14 +12,17 @@ We believe that tracking podcasts, and find more that you enjoy, should be an ea
 - React
 - Redux
 - CSS
-- Tailwind
+- Bootstrap
 - NodeJS
 - Express
 - mongoDB
 - Mongoose
 
-## React Sample Code:
-![React](ReactCodeExample)
+## React Sample Code - NEEDS TO BE UPDATED:
+![React](https://github.com/skroll13/capstoneProject/blob/main/assets/w1.jpg)
+
+## NodeJS Sample Code - NEEDS TO BE UPDATED:
+![Node](https://github.com/skroll13/capstoneProject/blob/main/assets/w5.jpg)
 
 ## How to run on your machine:
 - Clone the github repo.
