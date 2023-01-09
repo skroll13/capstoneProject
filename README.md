@@ -18,12 +18,6 @@ We believe that tracking podcasts, and find more that you enjoy, should be an ea
 - mongoDB
 - Mongoose
 
-## React Sample Code - NEEDS TO BE UPDATED:
-![React](https://github.com/skroll13/capstoneProject/blob/main/assets/ReactCodeExample.png)
-
-## NodeJS Sample Code - NEEDS TO BE UPDATED:
-![Node](https://github.com/skroll13/capstoneProject/blob/main/assets/NodeJSSampleCode.png)
-
 ## How to run on your machine:
 - Clone the github repo.
 - Run npm install to bring in the necessary functionality.
